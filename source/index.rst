@@ -20,6 +20,12 @@ Table of Contents
     Introductory <./cloudflare/index.rst>
     cloudflare/workers/index
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Database Management Systems
+
+    Introductory <./dbms/index.rst>
+
 
 Contribution
 ++++++++++++
