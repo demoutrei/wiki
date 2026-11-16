@@ -18,6 +18,7 @@ Table of Contents
     :caption: Cloudflare
 
     Introductory <./cloudflare/index.rst>
+    cloudflare/workers/index
 
 
 Contribution
