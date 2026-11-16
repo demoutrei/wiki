@@ -13,6 +13,12 @@ Table of Contents
 
     Introductory <./artificial_intelligence/index.rst>
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Cloudflare
+
+    Introductory <./cloudflare/index.rst>
+
 
 Contribution
 ++++++++++++
