@@ -26,6 +26,15 @@ Table of Contents
 
     Introductory <./dbms/index.rst>
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Discord
+
+    Introductory <./discord/index.rst>
+    discord/api/index
+    discord/markdown
+    discord/message_formatting
+
 
 Contribution
 ++++++++++++

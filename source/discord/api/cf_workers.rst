@@ -1,0 +1,198 @@
+.. raw:: html
+
+    <script id="discord:component-embed" type="application/json">
+      {
+        "component": {
+          "type": 17,
+          "accent_color": 3908956,
+          "components": [
+            {
+              "type": 9,
+              "components": [
+                {
+                  "type": 10,
+                  "content": "# [Cloudflare Workers](https://guides.demoutrei.dev/discord/api/cf-workers)\nLearn how to integrate HTTP-interaction (serverless) Discord application with Cloudflare Workers."
+                }
+              ],
+              "accessory": {
+                "type": 11,
+                "media": {
+                  "url": "https://cdn.discordapp.com/embed/avatars/2.png"
+                }
+              }
+            }
+          ]
+        }
+      }
+    </script>
+
+
+Cloudflare Workers
+==================
+
+This guidepage walks through the steps on how to integrate your HTTP-interaction (serverless) Discord application with Cloudflare Workers.
+
+
+Prerequisites
++++++++++++++
+
+Before we proceed with the steps, there are prerequisites to prepare:
+
+.. tabs::
+
+    .. tab:: Python
+
+        1. A `Cloudflare Worker`_.
+
+        2. A `Discord`_ account, and a Discord application and its public key (can be found in the **General Information** tab of your application in the Developer Portal).
+
+.. seealso::
+
+    `How Do I Create an Application?`_
+
+    `Cloudflare Workers -- Getting Started`_
+
+
+Setup
++++++
+
+Navigate to the parent directory of where your project directory will reside. In the terminal, set up your development environment:
+
+.. tabs::
+
+    .. tab:: Python
+
+        Install the ``cryptography`` package for later:
+
+        .. code-block:: bash
+
+            uv add cryptography==47.0.0
+
+        .. important::
+
+            ``workers-py`` currently only supports version ``47.0.0`` of the ``cryptography``.
+
+            Utilizing the ``pynacl`` package cannot be done as well, for the reason that libsodium internally uses ``eval``, which is currently disabled in workers for security purposes; this cannot be resolved right now unless libsodium drops EM_ASM and replace it to something else.
+
+            .. admonition:: Source
+                :class: seealso
+
+                `GitHub Issue #271 response <https://github.com/cloudflare/workers-py/issues/271#issuecomment-5771459989>`_
+
+        Copy your Discord application's public key and paste it in to your ``wrangler.jsonc`` file within the ``"vars"`` key.
+
+        .. code-block:: json
+
+            {
+              "vars": {
+                "APPLICATION_PUBLIC_KEY": "paste your public key here"
+              }
+            }
+
+
+Configuring Interactions Endpoint URL
++++++++++++++++++++++++++++++++++++++
+
+An **Interactions Endpoint URL** is a public endpoint for your app where Discord can send your app HTTP-based interactions. If your app is using Gateway-based interactions, you don't need to configure an Interactions Endpoint URL.
+
+Before you can add your Interactions Endpoint URL to your app, your endpoint must be prepared for two things ahead of time:
+
+1. Validate security-related request headers (``X-Signature-Ed25519`` and ``X-Signature-Timestamp``).
+
+2. Acknowledging ``PING`` requests from Discord.
+
+
+Validating Security Request Headers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To receive interactions via HTTP, there are some security steps you **must** take before your app is eligible to receive requests.
+
+Each interaction is sent with the following headers:
+
+- ``X-Signature-Ed25519`` as a signature
+
+- ``X-Signature-Timestamp`` as a timestamp
+
+Using your favorite security library, you **must validate the request each time you receive an interaction**. If the signature fails validation, your app should respond with a ``401`` error code.
+
+.. tabs::
+
+    .. code-tab:: python
+
+        from cryptography.exceptions import InvalidSignature
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+        from workers import Response, WorkerEntryPoint
+        import json
+
+
+        class Default(WorkerEntryPoint):
+          async def fetch(self, request):
+            if request.method != "POST":
+              return Response("Method Not Allowed", status = 405)
+            body = await request.text()
+            signature = request.headers["X-Signature-Ed25519"]
+            timestamp = request.headers["X-Signature-Timestamp"]
+            try:
+              verify_key = Ed25519PublicKey.from_public_bytes(bytes.fromhex(self.env.APPLICATION_PUBLIC_KEY))
+              verify_key.verify(bytes.fromhex(signature), f"{timestamp}{body}".encode())
+            except InvalidSignature:
+              return Response("Invalid request signature", status = 401)
+
+
+Acknowledging PING Requests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding your Interactions Endpoint URL, Discord will send a ``POST`` request with a ``PING`` payload with a ``type: 1`` to your endpoint. Your app is expected to acknowledge the request by returning a ``200`` response with a ``PONG`` payload (which has the same ``type: 1``).
+
+.. tabs::
+
+    .. code-tab:: python
+
+        class Default(WorkerEntryPoint):
+          async def fetch(self, request):
+            # ...
+            data = json.loads(body)
+            if data["type"] == 1:
+              return Response.json(
+                { "type": 1 },
+                headers = {
+                  "Content-Type": "application/json"
+                },
+                status = 200
+              )
+
+
+Next Steps
+++++++++++
+
+.. grid:: 1 2 2 2
+    :gutter: 3
+
+    .. grid-item-card:: Receiving and Responding to Interactions
+        :link: https://docs.discord.com/developers/interactions/receiving-and-responding
+        :link-type: url
+
+    .. grid-item-card:: Managing Application Commands
+        :link: https://docs.discord.com/developers/interactions/application-commands
+        :link-type: url
+
+
+-----
+
+
+.. admonition:: Sources
+    :class: seealso
+
+    `Interactions Overview - Documentation - Discord`_
+
+    `Write Cloudflare Workers in Python - Cloudflare Workers docs`_
+
+
+.. _Cloudflare Worker: https://guides.demoutrei.dev/cloudflare/workers
+.. _Cloudflare Workers -- Getting Started: https://guides.demoutrei.dev/cloudflare/workers/getting_started
+.. _Discord: https://discord.com
+.. _How Do I Create an Application?: ./faq#how-do-i-create-an-application
+.. _Interactions Overview - Documentation - Discord: https://docs.discord.com/developers/interactions/overview#validating-security-headers
+.. _Node.JS: https://nodejs.org/en
+.. _uv: https://docs.astral.sh/uv/#installation
+.. _Write Cloudflare Workers in Python - Cloudflare Workers docs: https://developers.cloudflare.com/workers/languages/python/

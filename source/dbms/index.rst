@@ -269,7 +269,9 @@ Types of DBMS Language
 
 .. _AWS: https://aws.amazon.com/
 .. _Azure: https://azure.microsoft.com/en-us
+.. _Databases, from the ground up: https://docs.cyrodev.fun/dbms/
 .. _Google Cloud: https://cloud.google.com/
 .. _MySQL: https://www.mysql.com/
 .. _Oracle: https://oracle.com
+.. _PL/SQL: https://www.oracle.com/asean/database/technologies/appdev/plsql.html
 .. _PostgreSQL: https://postgresql.org
