@@ -343,74 +343,65 @@ A simplified graphics pipeline can be represented as:
 
 The exact pipeline varies depending on the graphics system and API, but the general idea is that complex graphical data is progessively transformed into pixels that can be displayed.
 
-
-Modeling Transformation
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Objects are positioned, rotated, and scaled within a scene.
-
-.. admonition:: Example
-    :class: hint
-
-    A 3D object may be moved to a different position, rotated, enlarged, or reduced.
-
-
-Viewing Transformation
-^^^^^^^^^^^^^^^^^^^^^^
-
-The scene is transformed according to the position and orientation of the camera or viewer.
-
-.. admonition:: Example
-    :class: hint
-
-    In a 3D game, the player's camera determines what part of the game world is visible.
-
-
-Projection
-^^^^^^^^^^
-
-Three-dimensional objects need to be represented on a two-dimensional display.
-
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
-    .. grid-item-card:: Perspective Projection
+    .. grid-item-card:: Modeling Transformation
 
-        Objects farther away appear smaller. This resembles how humans normally perceive the world.
+        Objects are positioned, rotated, and scaled within a scene.
 
-    .. grid-item-card:: Orthographic Projection
+        .. admonition:: Example
+            :class: hint
 
-        Objects maintain their relative size regardless of distance. This is often useful for technical drawings and certain visualization applications.
+            A 3D object may be moved to a different position, rotated, enlarged, or reduced.
 
+    .. grid-item-card:: Viewing Transformation
 
-Clipping
-^^^^^^^^
+        The scene is transformed according to the position and orientation of the camera or viewer.
 
-Objects or parts of objects outside the visible area are removed or ignored.
+        .. admonition:: Example
+            :class: hint
 
-.. admonition:: Example
-    :class: hint
+            In a 3D game, the player's camera determines what part of the game world is visible.
 
-    If an object is completely outside the camera's view, there is no need to render it.
+    .. grid-item-card:: Projection
 
+        Three-dimensional objects need to be represented on a two-dimensional display.
 
-Rasterization
-^^^^^^^^^^^^^
+        .. grid:: 1 2 2 2
+            :gutter: 3
 
-Converts geometric information into fragments/pixels that can eventually be displayed.
+            .. grid-item-card:: Perspective Projection
 
-.. admonition:: Example
-    :class: hint
+                Objects farther away appear smaller. This resembles how humans normally perceive the world.
 
-    Vector / 3D Shape → Rasterization → Pixel Representation
+            .. grid-item-card:: Orthographic Projection
 
-This is a crucial stage in real-time computer graphics.
+                Objects maintain their relative size regardless of distance. This is often useful for technical drawings and certain visualization applications.
 
+    .. grid-item-card:: Clipping
 
-Frame Buffer
-^^^^^^^^^^^^
+        Objects or parts of objects outside the visible area are removed or ignored.
 
-The **frame buffer** stores information about the image that is going to be displayed. It contains the graphical information corresponding to the current frame. The display system uses this information to produce the visible image.
+        .. admonition:: Example
+            :class: hint
+
+            If an object is completely outside the camera's view, there is no need to render it.
+
+    .. grid-item-card:: Rasterization
+
+        Converts geometric information into fragments/pixels that can eventually be displayed.
+
+        .. admonition:: Example
+            :class: hint
+
+            Vector / 3D Shape → Rasterization → Pixel Representation
+
+        This is a crucial stage in real-time computer graphics.
+
+    .. grid-item-card:: Frame Buffer
+
+        The **frame buffer** stores information about the image that is going to be displayed. It contains the graphical information corresponding to the current frame. The display system uses this information to produce the visible image.
 
 
 Areas of Visual Computing
@@ -424,94 +415,83 @@ What is Visual Computing?
 
 It combines areas such as computer graphics, computer vision, image processing, visualization, animation, virtual reality, and augmented reality.
 
+.. grid:: 1
+    :gutter: 3
 
-Computer Graphics
-^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: Computer Graphics
 
-Computer graphics focuses primarily on **generating visual content**.
+        Computer graphics focuses primarily on **generating visual content**.
 
-.. admonition:: Example
-    :class: hint
+        .. admonition:: Example
+            :class: hint
 
-    - 3D models
-    - Games
-    - Animation
-    - Digital art
-    - Simulations
+            - 3D models
+            - Games
+            - Animation
+            - Digital art
+            - Simulations
 
+    .. grid-item-card:: Computer Vision
 
-Computer Vision
-^^^^^^^^^^^^^^^
+        Computer vision focuses on enabling computers to interpret and understand images or videos.
 
-Computer vision focuses on enabling computers to interpret and understand images or videos.
+        .. admonition:: Example
+            :class: hint
 
-.. admonition:: Example
-    :class: hint
+            - Object detection
+            - Face detection
+            - Image classification
+            - Motion tracking
+            - Medical image analysis
 
-    - Object detection
-    - Face detection
-    - Image classification
-    - Motion tracking
-    - Medical image analysis
+    .. grid-item-card:: Image Processing
 
+        Image processing involves manipulating or improving digital images.
 
-Image Processing
-^^^^^^^^^^^^^^^^
+        .. admonition:: Example
+            :class: hint
 
-Image processing involves manipulating or improving digital images.
+            - Brightness adjustment
+            - Contrast enhancement
+            - Noice reduction
+            - Sharpening
+            - Image resizing
+            - Filtering
 
-.. admonition:: Example
-    :class: hint
+    .. grid-item-card:: Data Visualization
 
-    - Brightness adjustment
-    - Contrast enhancement
-    - Noice reduction
-    - Sharpening
-    - Image resizing
-    - Filtering
+        Data visualization represents information graphically to make patterns and relationships easier to understand.
 
+        .. admonition:: Example
+            :class: hint
 
-Data Visualization
-^^^^^^^^^^^^^^^^^^
+            - Bar charts
+            - Line graphs
+            - Pie charts
+            - Heat maps
+            - Interactive dashboards
 
-Data visualization represents information graphically to make patterns and relationships easier to understand.
+    .. grid-item-card:: Animation
 
-.. admonition:: Example
-    :class: hint
+        Animation involves creating the appearance of movement by displaying a sequence of images or changing graphical objets over time.
 
-    - Bar charts
-    - Line graphs
-    - Pie charts
-    - Heat maps
-    - Interactive dashboards
+        .. admonition:: Example
+            :class: hint
 
+            - 2D animation
+            - 3D animation
+            - Character animation
+            - Motion graphics
 
-Animation
-^^^^^^^^^
+    .. grid-item-card:: Virtual Reality
 
-Animation involves creating the appearance of movement by displaying a sequence of images or changing graphical objets over time.
+        **Virtual reality** creates an immersive computer-generated environment. Users may interact with the environment through devices such sa VR headsets, motion controllers, and sensors.
 
-.. admonition:: Example
-    :class: hint
+    .. grid-item-card:: Augmented Reality
 
-    - 2D animation
-    - 3D animation
-    - Character animation
-    - Motion graphics
+        **Augmented reality** adds computer-generated information or objects to the user's view of the real world.
 
+        .. admonition:: Example
+            :class: hint
 
-Virtual Reality
-^^^^^^^^^^^^^^^
-
-**Virtual reality** creates an immersive computer-generated environment. Users may interact with the environment through devices such sa VR headsets, motion controllers, and sensors.
-
-
-Augmented Reality
-^^^^^^^^^^^^^^^^^
-
-**Augmented reality** adds computer-generated information or objects to the user's view of the real world.
-
-.. admonition:: Example
-    :class: hint
-
-    An AR application may display a virtual object while the user is looking at a real environment through a camera.
+            An AR application may display a virtual object while the user is looking at a real environment through a camera.

@@ -123,7 +123,7 @@ Key Steps in Databse Re-engineering
 Techniques Used in Database Re-Engineering
 ++++++++++++++++++++++++++++++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Normalization

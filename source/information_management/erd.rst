@@ -101,7 +101,8 @@ Models of ERD
               **Attributes**: StudentID, CourseID, EnrolmentDate
 
             Relationship
-              - Student enrols in Course (via Enrolment)
+            
+            - Student enrolls in Course (via Enrolment)
 
     .. grid-item-card:: Physical ERD
 
@@ -321,7 +322,6 @@ Attribute
 An **attribute** of an entity is a particular property that describes the entity. It's the characteristics of either an entity, a many-to-many relationship, or a one-to-one relationship.
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Required Attribute

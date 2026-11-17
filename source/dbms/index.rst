@@ -62,12 +62,12 @@ Any DBMS-based application is made up of six key components that work together t
 
     .. grid-item-card:: Hardware
 
-        Physical devices like servers, disks, input/output devices. Stores and processes data; itnerfaces between real-world inputs and digital systems.
+        Physical devices like servers, disks, input/output devices. Stores and processes data; interfaces between real-world inputs and digital systems.
 
         .. admonition:: Exmaples
             :class: hint
 
-            Personal computer, hard disk, RAM, network devices used for DBMS oeprations.
+            Personal computer, hard disk, RAM, network devices used for DBMS operations.
 
     .. grid-item-card:: Software
 
@@ -216,7 +216,7 @@ Types of DBMS Language
 
             .. grid-item-card:: CALL
 
-                call a `PL/SQL`_ or Java subprogram.
+                Call a `PL/SQL`_ or Java subprogram.
 
             .. grid-item-card:: EXPLAIN PLAN
 

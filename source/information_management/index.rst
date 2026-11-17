@@ -42,7 +42,7 @@ Information Management
         :link: ./db_administration
         :link-type: url
 
-        Database administration focuses on the operational management of database systems so that they remain available, reliable, secure, and performant. Three core responsibilities are **concurrency ontrol**, **security management**, and **backup and recovery**. These functions direectly affect the quality, reliability, and safety of the data that supports organizational processes.
+        Database administration focuses on the operational management of database systems so that they remain available, reliable, secure, and performant. Three core responsibilities are **concurrency control**, **security management**, and **backup and recovery**. These functions direectly affect the quality, reliability, and safety of the data that supports organizational processes.
 
     .. grid-item-card:: Distributed Databases
         :link: ./distributed_db

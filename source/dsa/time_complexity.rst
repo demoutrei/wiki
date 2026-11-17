@@ -9,23 +9,20 @@ Asymptotic Notations
 
 Algorithms can perform differently depending on the structure of the input data. We analyze them using three main bounds:
 
+.. grid:: 1
+    :gutter: 3
 
-Worst-Case
-~~~~~~~~~~
+    .. grid-item-card:: Worst-Case
 
-**Big O notation** :math:`O` is a mathematical metric used to describe the efficiency and performance of an algorithm. It measures how the execution time or space requirements grow relative to the input size (:math:`n`), specially representing the worse-case scenario (upper bound).
+        **Big O notation** :math:`O` is a mathematical metric used to describe the efficiency and performance of an algorithm. It measures how the execution time or space requirements grow relative to the input size (:math:`n`), specially representing the worse-case scenario (upper bound).
 
+    .. grid-item-card:: Best-Case
 
-Best-Case
-~~~~~~~~~
+        **Big Omega notation** :math:`Ω` defines the asymptotic lower bound of an algorithm's time complexity. It represents absolute minimum time or steps an algorithm requires to run for large input sizes. In simpler terms, it answers the question: "*At the very least, how fast will this algorithm grow?*".
 
-**Big Omega notation** :math:`Ω` defines the asymptotic lower bound of an algorithm's time complexity. It represents absolute minimum time or steps an algorithm requires to run for large input sizes. In simpler terms, it answers the question: "*At the very least, how fast will this algorithm grow?*".
+    .. grid-item-card:: Average-Case
 
-
-Average-Case
-~~~~~~~~~~~~
-
-**Big Theta notation** :math:`Θ` defines a tight asymptotic bound on the execution time of an algorithm. Unlike `Big O <#worst-case>`_ (which provides a maximum boundary) or `Big Omega <#best-case>`_ (which provides a minimum boundary), Big Theta bounds a function from both above and below. This means the algorithm's actual performance scales precisely at the rate indicated by the bounding function as input size grows toward infinity.
+        **Big Theta notation** :math:`Θ` defines a tight asymptotic bound on the execution time of an algorithm. Unlike `Big O <#worst-case>`_ (which provides a maximum boundary) or `Big Omega <#best-case>`_ (which provides a minimum boundary), Big Theta bounds a function from both above and below. This means the algorithm's actual performance scales precisely at the rate indicated by the bounding function as input size grows toward infinity.
 
 
 Common Time Complexities
@@ -33,243 +30,232 @@ Common Time Complexities
 
 Ordered by efficiency:
 
+.. grid:: 1
+    :gutter: 3
 
-Constant Time :math:`O(1)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+    .. grid-item-card:: Constant Time :math:`O(1)`
 
-Execution time remains the same regardless of input size.
+        Execution time remains the same regardless of input size.
 
-.. admonition:: Common Examples
-    :class: hint
+        .. admonition:: Common Examples
+            :class: hint
 
-    Accessing an array element by its index.
+            Accessing an array element by its index.
 
-.. tabs::
+        .. tabs::
 
-    .. code-tab:: c++
+            .. code-tab:: c++
 
-        template <int size>
-        int constant(int (&array)[size]) {
-          return array[0];
-        }
+                template <int size>
+                int constant(int (&array)[size]) {
+                  return array[0];
+                }
 
-    .. code-tab:: py
+            .. code-tab:: py
 
-        def constant(array: list[int]) -> int:
-          return array[0]
+                def constant(array: list[int]) -> int:
+                  return array[0]
 
+    .. grid-item-card:: Logarithmic Time :math:`O(log n)`
 
-Logarithmic Time :math:`O(log n)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        The problem size is divided by a factor (usually halved) at each step.
 
-The problem size is divided by a factor (usually halved) at each step.
+        .. admonition:: Common Examples
+            :class: hint
 
-.. admonition:: Common Examples
-    :class: hint
+            `Binary Search`_
 
-    `Binary Search`_
+        .. tabs::
 
-.. tabs::
+            .. code-tab:: c++
 
-    .. code-tab:: c++
+                int power(int base, int exponent) {
+                  int result { 1 };
+                  while (0 < exponent) {
+                    if (exponent % 2 == 1) {
+                      result *= base;
+                    }
+                    base *= base;
+                    exponent /= 2;
+                  }
+                  return result;
+                }
 
-        int power(int base, int exponent) {
-          int result { 1 };
-          while (0 < exponent) {
-            if (exponent % 2 == 1) {
-              result *= base;
-            }
-            base *= base;
-            exponent /= 2;
-          }
-          return result;
-        }
+            .. code-tab:: py
 
-    .. code-tab:: py
+                def power(base: int, exponent: int) -> int:
+                  result: int = 1
+                  while 0 < exponent:
+                    if exponent % 2 == 1:
+                      result *= base
+                    base *= base
+                    exponent //= 2
+                  return result
 
-        def power(base: int, exponent: int) -> int:
-          result: int = 1
-          while 0 < exponent:
-            if exponent % 2 == 1:
-              result *= base
-            base *= base
-            exponent //= 2
-          return result
+    .. grid-item-card:: Linear Time :math:`O(n)`
 
+        Running time grows in direct proportion to the input size.
 
-Linear Time :math:`O(n)`
-~~~~~~~~~~~~~~~~~~~~~~~~
+        .. admonition:: Common Examples
+            :class: hint
 
-Running time grows in direct proportion to the input size.
+            A single loop traversing a list.
 
-.. admonition:: Common Examples
-    :class: hint
+        .. tabs::
 
-    A single loop traversing a list.
+            .. code-tab:: c++
 
-.. tabs::
+                template <int size>
+                void linear(int (&array)[size]) {
+                  for (int element : array) {
+                    std::cout << element << " ";
+                  }
+                }
 
-    .. code-tab:: c++
+            .. code-tab:: py
 
-        template <int size>
-        void linear(int (&array)[size]) {
-          for (int element : array) {
-            std::cout << element << " ";
-          }
-        }
+                def linear(array: list[int]) -> None:
+                  for element in array:
+                    print(element)
 
-    .. code-tab:: py
+    .. grid-item-card:: Linearithmic Time :math:`O(n log n)`
 
-        def linear(array: list[int]) -> None:
-          for element in array:
-            print(element)
+        Slightly worse than `linear <#linear-time-o-n>`_, typical for efficient sorting mechanisms.
 
+        .. admonition:: Common Examples
+            :class: hint
 
-Linearithmic Time :math:`O(n log n)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            `Merge Sort`_ and `Quick Sort`_
 
-Slightly worse than `linear <#linear-time-o-n>`_, typical for efficient sorting mechanisms.
+        .. tabs::
 
-.. admonition:: Common Examples
-    :class: hint
+            .. code-tab:: c++
 
-    `Merge Sort`_ and `Quick Sort`_
+                int linearithmic(int size) {
+                  int count { 0 };
+                  for (int i = 0; i < size; ++i) {
+                    int j { size };
+                    while (1 < j) {
+                      j /= 2;
+                      count += 1;
+                    }
+                  }
+                  return count;
+                }
 
-.. tabs::
+            .. code-tab:: py
 
-    .. code-tab:: c++
+                def linearithmic(size: int) -> int:
+                  count: int = 0
+                  for i in range(size):
+                    j: int = size
+                    while 1 < j:
+                      j //= 2
+                      count += 1
+                  return count
 
-        int linearithmic(int size) {
-          int count { 0 };
-          for (int i = 0; i < size; ++i) {
-            int j { size };
-            while (1 < j) {
-              j /= 2;
-              count += 1;
-            }
-          }
-          return count;
-        }
+    .. grid-item-card:: Quadratic Time :math:`O(n ^ 2)`
 
-    .. code-tab:: py
+        Execution time scales non-linearly, squaring the input size growth.
 
-        def linearithmic(size: int) -> int:
-          count: int = 0
-          for i in range(size):
-            j: int = size
-            while 1 < j:
-              j //= 2
-              count += 1
-          return count
 
+        .. admonition:: Common Examples
+            :class: hint
 
-Quadratic Time :math:`O(n ^ 2)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Nested loops, like `Bubble Sort`_
 
-Execution time scales non-linearly, squaring the input size growth.
+        .. tabs::
 
+            .. code-tab:: c++
 
-.. admonition:: Common Examples
-    :class: hint
+                template <int size>
+                void quadratic(int (&array)[size]) {
+                  for (int i = 0; i < size; ++i) {
+                    for (int j = 0; j < size; ++j) {
+                      std::cout << i << j << std::endl;
+                    }
+                  }
+                }
 
-    Nested loops, like `Bubble Sort`_
+            .. code-tab:: py
 
-.. tabs::
+                def quadratic(array: list[int]) -> None:
+                  for i in array:
+                    for j in array:
+                      print(i, j)
 
-    .. code-tab:: c++
+    .. grid-item-card:: Exponential Time :math:`O(2 ^ n)`
 
-        template <int size>
-        void quadratic(int (&array)[size]) {
-          for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) {
-              std::cout << i << j << std::endl;
-            }
-          }
-        }
+        Growth doubles with each additional data unit; quickly becomes unrunnable.
 
-    .. code-tab:: py
+        .. admonition:: Common Examples
+            :class: hint
 
-        def quadratic(array: list[int]) -> None:
-          for i in array:
-            for j in array:
-              print(i, j)
+            Recursive Fibonacci sequence calculations.
 
+        .. tabs::
 
-Exponential Time :math:`O(2 ^ n)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            .. code-tab:: c++
 
-Growth doubles with each additional data unit; quickly becomes unrunnable.
+                int fibonacci(int n) {
+                  if (n < 2) return n;
+                  return fibonacci(n - 1) + fibonacci(n - 2);
+                }
 
-.. admonition:: Common Examples
-    :class: hint
+            .. code-tab:: py
 
-    Recursive Fibonacci sequence calculations.
+                def fibonacci(n: int) -> int:
+                  if n < 2: return n
+                  return fibonacci(n - 1) + fibonacci(n - 2)
 
-.. tabs::
+    .. grid-item-card:: Factorial Time :math:`O(n!)`
 
-    .. code-tab:: c++
+        Grows incredibly fast; completely unusable for inputs larger than :math:`n ≈ 10`.
 
-        int fibonacci(int n) {
-          if (n < 2) return n;
-          return fibonacci(n - 1) + fibonacci(n - 2);
-        }
+        .. admonition:: Common Examples
+            :class: hint
 
-    .. code-tab:: py
+            Generating all permutations of a string, or solving the Traveling Salesperson Problem.
 
-        def fibonacci(n: int) -> int:
-          if n < 2: return n
-          return fibonacci(n - 1) + fibonacci(n - 2)
+        .. tabs::
 
+            .. code-tab:: c++
 
-Factorial Time :math:`O(n!)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                std::vector<std::vector<int>> permutations(std::vector<int> &array) {
+                  if (array.size() <= 1) return { array };
+                  std::vector<std::vector<int>> allPermutations;
+                  for (int i = 0; i < array.size(); ++i) {
+                    int current { array[i] };
+                    std::vector<int> remaining;
+                    remaining.insert(remaining.end(), array.begin(), array.begin() + i);
+                    remaining.insert(remaining.end(), array.begin() + i + 1, array.end());
+                    std::vector<std::vector<int>> subpermutations { permutations(remaining) };
+                    for (int i = 0; i < subpermutations.size(); ++i) {
+                      std::vector<int> permutation { current };
+                      permutation.insert(permutation.end(), subpermutations[i].begin(), subpermutations[i].end());
+                      allPermutations.push_back(permutation);
+                    }
+                  }
+                  return allPermutations;
+                }
 
-Grows incredibly fast; completely unusable for inputs larger than :math:`n ≈ 10`.
+            .. code-tab:: py
 
-.. admonition:: Common Examples
-    :class: hint
+                def permutations(array: list[int]) -> list[list[int]]:
+                  if len(array) <= 1: return [array]
+                  all_permutations: list[list[int]] = list()
+                  for i in range(len(array)):
+                    current: int = array[i]
+                    remaining: list[int] = array[:i] + array[i + 1:]
+                    for permutation in permutations(remaining):
+                      all_permutations.append([current] + permutation)
+                  return all_permutations
 
-    Generating all permutations of a string, or solving the Traveling Salesperson Problem.
+        .. figure:: https://miro.medium.com/v2/resize:fit:1400/1*5ZLci3SuR0zM_QlZOADv8Q.jpeg
+            :align: center
+            :width: 80%
 
-.. tabs::
-
-    .. code-tab:: c++
-
-        std::vector<std::vector<int>> permutations(std::vector<int> &array) {
-          if (array.size() <= 1) return { array };
-          std::vector<std::vector<int>> allPermutations;
-          for (int i = 0; i < array.size(); ++i) {
-            int current { array[i] };
-            std::vector<int> remaining;
-            remaining.insert(remaining.end(), array.begin(), array.begin() + i);
-            remaining.insert(remaining.end(), array.begin() + i + 1, array.end());
-            std::vector<std::vector<int>> subpermutations { permutations(remaining) };
-            for (int i = 0; i < subpermutations.size(); ++i) {
-              std::vector<int> permutation { current };
-              permutation.insert(permutation.end(), subpermutations[i].begin(), subpermutations[i].end());
-              allPermutations.push_back(permutation);
-            }
-          }
-          return allPermutations;
-        }
-
-    .. code-tab:: py
-
-        def permutations(array: list[int]) -> list[list[int]]:
-          if len(array) <= 1: return [array]
-          all_permutations: list[list[int]] = list()
-          for i in range(len(array)):
-            current: int = array[i]
-            remaining: list[int] = array[:i] + array[i + 1:]
-            for permutation in permutations(remaining):
-              all_permutations.append([current] + permutation)
-          return all_permutations
-
-.. figure:: https://miro.medium.com/v2/resize:fit:1400/1*5ZLci3SuR0zM_QlZOADv8Q.jpeg
-    :align: center
-    :width: 80%
-
-    *Source*: `Medium <https://medium.com/data-science/understanding-time-complexity-with-python-examples-2bda6e8158a7>`_
+            *Source*: `Medium <https://medium.com/data-science/understanding-time-complexity-with-python-examples-2bda6e8158a7>`_
 
 
 How to Calculate Time Complexity

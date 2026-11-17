@@ -28,6 +28,7 @@ A **stack** is a linear data structure that follows the **Last In, First Out** (
     :class: tip
 
     The **LIFO principle** means that the last element added to a stack is the first one to be removed.
+    
     - New elements are always pushed on top.
     - Removal (pop) always happens only from the top.
     - This ensures a strict order: last in → first out.
@@ -54,75 +55,93 @@ A **stack** is a linear data structure that follows the **Last In, First Out** (
 Advantages and Disadvantages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. grid:: 1 2 2 2
-    :class-row: surface
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Advantages
 
-        :math:`O(1)` Time Complexity
-          Push, pop, and peek operations run in constant time.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        No Shifting Required
-          Adding or removing data never requires shifting elements around.
+            .. grid-item-card:: :math:`O(1)` Time Complexity
 
-        Memory Efficiency
-          Requires minimal memory overhead because it only tracks a single top pointer.
-        
-        Inherent LIFO Management
-          Perfectly models real-world undo/redo histories and browser back buttons.
+                Push, pop, and peek operations run in constant time.
 
-        Automated Cleanup
-          Automatically allocates and deallocates memory during function call execution.
+            .. grid-item-card:: No Shifting Required
 
-        Algorithm Simplicity
-          Simplifies implementations of backtracking, text parsing, and string reversals.
+                Adding or removing data never requires shifting elements around.
+
+            .. grid-item-card:: Memory Efficiency
+
+                Requires minimal memory overhead because it only tracks a single top pointer.
+            
+            .. grid-item-card:: Inherent LIFO Management
+
+                Perfectly models real-world undo/redo histories and browser back buttons.
+
+            .. grid-item-card:: Automated Cleanup
+
+                Automatically allocates and deallocates memory during function call execution.
+
+            .. grid-item-card:: Algorithm Simplicity
+
+                Simplifies implementations of backtracking, text parsing, and string reversals.
 
     .. grid-item-card:: Disadvantages
 
-        No Random Access
-          You cannot read or modify elements in the middle without popping the top.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        Risk of Overflow
-          Fixed-size array implementations crash with a stack overflow error if filled past capacity.
+            .. grid-item-card:: No Random Access
 
-        Risk of Underflow
-          Attempting to pop elements from an entirely empty stack triggers an underflow error.
+                You cannot read or modify elements in the middle without popping the top.
 
-        Inflexible Resizing
-          Static array variations cannot scale up dynamically if your data needs expand.
+            .. grid-item-card:: Risk of Overflow
 
-        Memory Wastage Potential
-          Oversizing a static stack pre-allocates contiguous memory that may sit entirely unused.
+                Fixed-size array implementations crash with a stack overflow error if filled past capacity.
 
-        Poor Search/Sort Capability
-          Searching for a specific value forces you to systematically destroy the structure.
+            .. grid-item-card:: Risk of Underflow
+
+                Attempting to pop elements from an entirely empty stack triggers an underflow error.
+
+            .. grid-item-card:: Inflexible Resizing
+
+                Static array variations cannot scale up dynamically if your data needs expand.
+
+            .. grid-item-card:: Memory Wastage Potential
+
+                Oversizing a static stack pre-allocates contiguous memory that may sit entirely unused.
+
+            .. grid-item-card:: Poor Search/Sort Capability
+
+                Searching for a specific value forces you to systematically destroy the structure.
 
 
 Types of Stack
 ^^^^^^^^^^^^^^
 
+.. grid:: 1
+    :gutter: 3
 
-Fixed-Size
-~~~~~~~~~~
+    .. grid-item-card:: Fixed-Size
 
-A fixed-size stack has a predefined capacity. Once it becomes full, no more elemnts can be added (this causes **overflow**). If the stack is empty and we try to remove an element, it causes **underflow**. Typically implemented using a static array.
+        A fixed-size stack has a predefined capacity. Once it becomes full, no more elemnts can be added (this causes **overflow**). If the stack is empty and we try to remove an element, it causes **underflow**. Typically implemented using a static array.
 
-.. admonition:: Example
-    :class: hint
+        .. admonition:: Example
+            :class: hint
 
-    Declaring a stack of size 10 using an array.
+            Declaring a stack of size 10 using an array.
 
+    .. grid-item-card:: Dynamic Size
 
-Dynamic Size
-~~~~~~~~~~~~
+        A dynamic size stack can grow and shrink automatically as needed. If the stack is full, its capacity expands to allow more elements. As elements are removed, memory usage can shrink as well. Can be implemented using `linked list <./linked_list>`_ (grows/shrinks naturally), and dynamic `array <./array>`_ (like vector in C++ or ArrayList in Java).
 
-A dynamic size stack can grow and shrink automatically as needed. If the stack is full, its capacity expands to allow more elements. As elements are removed, memory usage can shrink as well. Can be implemented using `linked list <./linked_list>`_ (grows/shrinks naturally), and dynamic `array <./array>`_ (like vector in C++ or ArrayList in Java).
+        .. admonition:: Example
+            :class: hint
 
-.. admonition:: Example
-    :class: hint
-
-    Stack implementation using `linked list <./linked_list>`_ or resizable `array <./array>`_.
+            Stack implementation using `linked list <./linked_list>`_ or resizable `array <./array>`_.
 
 
 Core Operations
@@ -130,20 +149,28 @@ Core Operations
 
 Every operation on a stack happens at a single point called the **Top of Stack** and runs in :math:`O(1)` time complexity.
 
-Push
-  Adds an item tothe top of the stack.
+.. grid:: 1
+    :gutter: 3
 
-Pop
-  Removes and returns the top item. Calling this on an empty stack causes a stack underflow error.
+    .. grid-item-card:: Push
 
-Peek or Top
-  Returns the value of the top item without removing it.
+        Adds an item tothe top of the stack.
 
-isEmpty
-  Checks if the stack is completely empty.
+    .. grid-item-card:: Pop
 
-isFull
-  Checks if a fixed-size stack has reached its maximum capacity (causes a stack overflow if exceeded).
+        Removes and returns the top item. Calling this on an empty stack causes a stack underflow error.
+
+    .. grid-item-card:: Peek or Top
+
+        Returns the value of the top item without removing it.
+
+    .. grid-item-card:: isEmpty
+
+        Checks if the stack is completely empty.
+
+    .. grid-item-card:: isFull
+
+        Checks if a fixed-size stack has reached its maximum capacity (causes a stack overflow if exceeded).
 
 
 Visualization

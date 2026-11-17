@@ -2,28 +2,31 @@ Information and Data Management Fundamentals
 ============================================
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Data
 
         Consists of unorganized numbers, symbols, or observations lacking explicit context or meaning on their own.
 
-        Examples
-          1. 102.4
-          2. 3.14
-          3. 9.81
-          4. 8 billion
+        .. admonition:: Examples
+            :class: hint
+
+            1. 102.4
+            2. 3.14
+            3. 9.81
+            4. 8 billion
 
     .. grid-item-card:: Information
 
         Processed and organized data that provides explicit meaning, clarity, and directly supports decision-making.
 
-        Examples
-          1. Temperature: 102.4 Fahrenheit
-          2. Pi value: 3.14
-          3. Gravitational acceleration: 9.81 m/s
-          4. Human population: 8 billion
+        .. admonition:: Examples
+            :class: hint
+
+            1. Temperature: 102.4 Fahrenheit
+            2. Pi value: 3.14
+            3. Gravitational acceleration: 9.81 m/s
+            4. Human population: 8 billion
 
 
 The DIKW Hierarchy
@@ -48,7 +51,6 @@ Primary Objectives of Data Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Data Quality
@@ -94,7 +96,6 @@ Dimensions of Data Quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Completeness

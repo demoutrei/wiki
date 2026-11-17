@@ -8,7 +8,6 @@ Advantages and Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Advantages
@@ -28,7 +27,7 @@ Advantages and Limitations
           Every node requires extra storage space strictly to house its pointer address.
 
         Forward-Only
-          You cannot traverse backward without building copmlex reversal logic.
+          You cannot traverse backward without building complex reversal logic.
 
 
 Node Structure
@@ -36,23 +35,34 @@ Node Structure
 
 Every node in a singly linked list contains exactly two components:
 
-Data
-  The actual value or information being stored.
+.. grid:: 1
+    :gutter: 3
 
-Next Pointer
-  A reference variable storing the memory address of the next node.
+    .. grid-item-card:: Data
+
+        The actual value or information being stored.
+
+    .. grid-item-card:: Next Pointer
+
+        A reference variable storing the memory address of the next node.
 
 
 To control and exit the structure, three main anchors are used:
 
-Head
-  A reference pointer pointing to the first node, serving as the list's entry point.
+.. grid:: 1
+    :gutter: 3
 
-Tail
-  An optional pointer referencing the final node to enable quick appending.
+    .. grid-item-card:: Head
 
-Null Terminator
-  The ``Next`` pointer of the final node points to ``Null``, marking the end of the sequence.
+        A reference pointer pointing to the first node, serving as the list's entry point.
+
+    .. grid-item-card:: Tail
+      
+        An optional pointer referencing the final node to enable quick appending.
+
+    .. grid-item-card:: Null Terminator
+      
+        The ``Next`` pointer of the final node points to ``Null``, marking the end of the sequence.
 
 
 Time Complexity of Operations

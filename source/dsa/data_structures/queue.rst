@@ -24,42 +24,60 @@ Unlike a `stack <../stack>`_ (which only allows access at one end), a queue is o
 Advantages and Disadvantages
 ++++++++++++++++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Advantages
 
-        Ordered Processing
-          It automatically maintains the exact order of data arrival, making it highly effective for handling temporal data sequences.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        Efficient Operations
-          Basic operations like adding an element (``enqueue``) and removing an element (``dequeue``) run in constant :math:`O(1)` time complexity.
+            .. grid-item-card:: Ordered Processing
 
-        Resource Decoupling
-          It acts as an excellent asynchronous buffer between devices or processes running at different speeds (e.g. a fast CPU and a slow keyboard or printer).
+                It automatically maintains the exact order of data arrival, making it highly effective for handling temporal data sequences.
 
-        Fairness in Shared Access
-          It effortlessly manages multiple consumers competing for a single shared resource by setting up a fair waiting list.
+            .. grid-item-card:: Efficient Operations
 
-        Versatility
-          It serves as a foundational component to implement other complex algorithms and data structures, such as Breadth-First Search.
+                Basic operations like adding an element (``enqueue``) and removing an element (``dequeue``) run in constant :math:`O(1)` time complexity.
+
+            .. grid-item-card:: Resource Decoupling
+
+                It acts as an excellent asynchronous buffer between devices or processes running at different speeds (e.g. a fast CPU and a slow keyboard or printer).
+
+            .. grid-item-card:: Fairness in Shared Access
+
+                It effortlessly manages multiple consumers competing for a single shared resource by setting up a fair waiting list.
+
+            .. grid-item-card:: Versatility
+
+                It serves as a foundational component to implement other complex algorithms and data structures, such as Breadth-First Search.
 
     .. grid-item-card:: Disadvantages
 
-        No Random Access
-          You cannot access elements directly by their index. You must look at or remove the elements in front of them first.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        Slow Searching
-          Finding a specific element within a queue requires a linear search, which takes :math:`O(n)` time complexity.
+            .. grid-item-card:: No Random Access
 
-        Inefficient Mid-Structure Editing
-          Modifying, inserting, or deleting items from the middle of a queue is a highly complex and time-consuming operation.
+                You cannot access elements directly by their index. You must look at or remove the elements in front of them first.
 
-        Memory Constraints (Array Implementation)
-          If a classical queue is built using a standard static array, it has a fixed maxium size that must be declared upfront.
+            .. grid-item-card:: Slow Searching
 
-        Wasted Space / Memory Drift
-          In a basic linear array queue, once elements are deleted from the head, the physical space they occupied cannot be reused. This can flag the queue as "full" even when memory slots are sitting empty.
+                Finding a specific element within a queue requires a linear search, which takes :math:`O(n)` time complexity.
+
+            .. grid-item-card:: Inefficient Mid-Structure Editing
+
+                Modifying, inserting, or deleting items from the middle of a queue is a highly complex and time-consuming operation.
+
+            .. grid-item-card:: Memory Constraints (Array Implementation)
+
+                If a classical queue is built using a standard static array, it has a fixed maxium size that must be declared upfront.
+
+            .. grid-item-card:: Wasted Space / Memory Drift
+
+                In a basic linear array queue, once elements are deleted from the head, the physical space they occupied cannot be reused. This can flag the queue as "full" even when memory slots are sitting empty.
 
 
 Core Operations

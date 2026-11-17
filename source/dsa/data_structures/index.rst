@@ -133,12 +133,32 @@ Common Operations
 
 Regardless of the type, software programs use data structures to perform six fundamental operations:
 
-- **Searching**: Finding a specific element within the structure.
-- **Sorting**: Arranging elements in a certain order (e.g. alphabetical, ascending numeric).
-- **Insertion**: Adding a new item to the structure.
-- **Deletion**: Removing an existing item from the structure.
-- **Updating**: Modifying an existing data element.
-- **Traversal**: Visiting every element in the structure exactly once to process it.
+.. grid:: 1
+    :gutter: 3
+
+    .. grid-item-card:: Searching
+
+        Finding a specific element within the structure.
+
+    .. grid-item-card:: Sorting
+
+        Arranging elements in a certain order (e.g. alphabetical, ascending numeric).
+
+    .. grid-item-card:: Insertion
+
+        Adding a new item to the structure.
+
+    .. grid-item-card:: Deletion
+
+        Removing an existing item from the structure.
+
+    .. grid-item-card:: Updating
+
+        Modifying an existing data element.
+
+    .. grid-item-card:: Traversal
+
+        Visiting every element in the structure exactly once to process it.
 
 
 .. toctree::

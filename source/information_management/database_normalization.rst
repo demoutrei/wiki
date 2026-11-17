@@ -129,481 +129,476 @@ Types of Normal Forms
 
 Database normalization is structured around a series of increasingly strict rules called **normal forms**. Each normal form addresses specific types of redundancy and dependency issues, guiding you toward a more robust and maintainable relational schema.
 
+.. grid:: 1
+    :gutter: 3
 
-First Normal Form
-^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: First Normal Form
 
-Initial state in the process of database normalization. It ensures taht each column in a table contains only atomic, indivisible values, and that each row is uniquely identifiable. By removing repeating groups and multi-valued attributes, it lays the groundwork for a more organized and consistent database structure. This makes querying, updating, and maintaing data more efficient and reliable, and ith helps avoid redundancy right from the beginning of the database design.
+        Initial state in the process of database normalization. It ensures taht each column in a table contains only atomic, indivisible values, and that each row is uniquely identifiable. By removing repeating groups and multi-valued attributes, it lays the groundwork for a more organized and consistent database structure. This makes querying, updating, and maintaing data more efficient and reliable, and ith helps avoid redundancy right from the beginning of the database design.
 
-**Rule Enforced**: Atomicity
+        **Rule Enforced**: Atomicity
 
-**Problem Solved**: Repeating/multi-valued data
+        **Problem Solved**: Repeating/multi-valued data
 
-**Dependency Focus**: None
+        **Dependency Focus**: None
 
-.. admonition:: Key Requirements
-    :class: important
+        .. admonition:: Key Requirements
+            :class: important
 
-    All columns must contain atomic values (no lists, sets, or composite fields).
+            All columns must contain atomic values (no lists, sets, or composite fields).
 
-    Each row is unique (typically enforced by a primary key).
+            Each row is unique (typically enforced by a primary key).
 
-    No repeating groups or arrays within a row.
+            No repeating groups or arrays within a row.
 
-    Each column contains values of a single data type.
+            Each column contains values of a single data type.
 
-.. admonition:: Key Takeaways
-    :class: tip
+        .. admonition:: Key Takeaways
+            :class: tip
 
-    1NF requires that each field in a table contains only one value (atomicity).
+            1NF requires that each field in a table contains only one value (atomicity).
 
-    Repeating groups and arrays are eliminated by creating separate rows for each value.
+            Repeating groups and arrays are eliminated by creating separate rows for each value.
 
-    This transformation lays the foundation for the further normalization steps by ensuring a consistent and logical table structure.
+            This transformation lays the foundation for the further normalization steps by ensuring a consistent and logical table structure.
 
-.. admonition:: Key Benefits
-    :class: tip
+        .. admonition:: Key Benefits
+            :class: tip
 
-    Simplifies data retrieval.
+            Simplifies data retrieval.
 
-    Establishes a baseline structure.
+            Establishes a baseline structure.
 
-.. admonition:: Example
-    :class: hint
+        .. admonition:: Example
+            :class: hint
 
-    Suppose you have a table tracking customer purchases, where the "Purchased Products" column contains a comma-separated list of products:
-
-    .. tabs::
-
-        .. tab:: Data Table
-
-            .. csv-table:: Purchases
-                :header: CustomerID, CustomerName, PurchasedProducts
-                :class: sphinx-datatable
-
-                101, John Doe, "Laptop, Mouse"
-                102, Jane Smith, Tablet
-                103, Alice Brown, "Keyboard, Monitor, Pen"
-
-        .. code-tab:: sql
-
-            CREATE TABLE Purchases (
-              CustomerID INT,
-              CustomerName VARCHAR(100),
-              PurchasedProducts VARCHAR(255) -- Comma-separated values
-            );
-
-    .. grid:: 1
-        :gutter: 3
-
-        .. grid-item-card:: Why is this not in 1NF?
-
-            - Non-atomic values
-                "Purchased Products" contains multiple items per cell.
-
-            - Querying and updating are complex
-                Searching for customers who bought "Mouse" requires string parsing.
-
-            - Data integrity risks
-                No way to enforce referential integrity between products and customers.
-
-            - Inconsistent data entry.
-                Different delimiters or typos can creep in.
-
-        .. grid-item-card:: Real-World Impact
-
-            - Reporting (e.g. "Who bought a Laptop?") is error-prone.
-
-            - Updates (e.g. renaming "Mouse", to "Wireless Mouse") are tedious and unreliable.
-
-            - Referential integrity cannot be enforced.
-
-        .. grid-item-card:: Real-World Issues
-
-            Reporting challenges
-              Generating reports such as "How many customers bought a Laptop?" becomes complicated, as you canot simply filter a column for "Laptop", you must parse the string.
-
-            Update anomalies
-              If a product name changes (e.g. "Mouse" to "Wireless Mouse"), you must update every occurrence in every cell, increasing the risk of missing some entries.
-
-            Data integrity risks
-              There is no way to enforce referential integrity between products and customers, which can lead to orphaned or inconsistent data.
-
-        .. grid-item-card:: Problems with the Unnormalized Table
-
-            Non-atomic values
-              The "Purchased Products" column contains multiple items in a single cell, making it difficult to query or update individual products.
-
-            Data redundancy and inconsistency
-              If a customer purchases more products, the list grows, increasing the risk of inconsistency data entry (e.g. different delimiters, typos).
-
-            Difficulties in searching and reporting
-              Queries to find all customers who purchased a specific product become complex and ineffiicent.
-
-        .. grid-item-card:: Transformation Steps
-
-            1. Identify columns with non-atomic values.
-                In this case, "Purchased Products" contains multiple values.
-
-            2. Split the multi-valued column into separate rows.
-                Each product purchased by a customer should be represented as a separate row, ensuring that every field contains only a single value.
-
-        .. grid-item-card:: Transformed Table in 1NF
+            Suppose you have a table tracking customer purchases, where the "Purchased Products" column contains a comma-separated list of products:
 
             .. tabs::
 
                 .. tab:: Data Table
 
-                    .. csv-table:: CustomerProducts
+                    .. csv-table:: Purchases
+                        :header: CustomerID, CustomerName, PurchasedProducts
                         :class: sphinx-datatable
-                        :header: CustomerID, CustomerName, Product
 
-                        101, John Doe, Laptop
-                        101, John Doe, Mouse
+                        101, John Doe, "Laptop, Mouse"
                         102, Jane Smith, Tablet
-                        103, Alice Brown, Keyboard
-                        103, Alice Brown, Monitor
-                        103, Alice Brown, Pen
+                        103, Alice Brown, "Keyboard, Monitor, Pen"
 
                 .. code-tab:: sql
 
-                    CREATE TABLE CustomerProducts (
+                    CREATE TABLE Purchases (
                       CustomerID INT,
                       CustomerName VARCHAR(100),
-                      Product VARCHAR(100)
+                      PurchasedProducts VARCHAR(255) -- Comma-separated values
                     );
 
-            **Explanation**:
-
-            - Each row now represents a single product purchased by a customer.
-            - All columns contain atomic values (no lists or sets).
-            - The table can be easily queries, updated, and maintained. For example, finding all customers who purchased "Mouse" is now straightforward.
-
-
-Second Normal Form
-^^^^^^^^^^^^^^^^^^
-
-A table is in 2NF if it is in 1NF and every non-prime attribute (i.e. non-primary key attribute) is fully functionally dependent on the entire primary key. This addresses **partial dependencies**, where a non-key attribute depends only on part of a composite key.
-
-.. admonition:: Example
-    :class: hint
-
-    .. grid:: 1
-        :gutter: 3
-
-        .. grid-item-card:: Transformation to 2NF
-
             .. grid:: 1
-                :class-row: surface
                 :gutter: 3
 
-                .. grid-item-card:: 1NF Table
+                .. grid-item-card:: Why is this not in 1NF?
+
+                    - Non-atomic values
+                        "Purchased Products" contains multiple items per cell.
+
+                    - Querying and updating are complex
+                        Searching for customers who bought "Mouse" requires string parsing.
+
+                    - Data integrity risks
+                        No way to enforce referential integrity between products and customers.
+
+                    - Inconsistent data entry.
+                        Different delimiters or typos can creep in.
+
+                .. grid-item-card:: Real-World Impact
+
+                    - Reporting (e.g. "Who bought a Laptop?") is error-prone.
+
+                    - Updates (e.g. renaming "Mouse", to "Wireless Mouse") are tedious and unreliable.
+
+                    - Referential integrity cannot be enforced.
+
+                .. grid-item-card:: Real-World Issues
+
+                    Reporting challenges
+                      Generating reports such as "How many customers bought a Laptop?" becomes complicated, as you canot simply filter a column for "Laptop", you must parse the string.
+
+                    Update anomalies
+                      If a product name changes (e.g. "Mouse" to "Wireless Mouse"), you must update every occurrence in every cell, increasing the risk of missing some entries.
+
+                    Data integrity risks
+                      There is no way to enforce referential integrity between products and customers, which can lead to orphaned or inconsistent data.
+
+                .. grid-item-card:: Problems with the Unnormalized Table
+
+                    Non-atomic values
+                      The "Purchased Products" column contains multiple items in a single cell, making it difficult to query or update individual products.
+
+                    Data redundancy and inconsistency
+                      If a customer purchases more products, the list grows, increasing the risk of inconsistency data entry (e.g. different delimiters, typos).
+
+                    Difficulties in searching and reporting
+                      Queries to find all customers who purchased a specific product become complex and ineffiicent.
+
+                .. grid-item-card:: Transformation Steps
+
+                    1. Identify columns with non-atomic values.
+                        In this case, "Purchased Products" contains multiple values.
+
+                    2. Split the multi-valued column into separate rows.
+                        Each product purchased by a customer should be represented as a separate row, ensuring that every field contains only a single value.
+
+                .. grid-item-card:: Transformed Table in 1NF
 
                     .. tabs::
 
                         .. tab:: Data Table
 
-                            .. csv-table:: Orders
+                            .. csv-table:: CustomerProducts
                                 :class: sphinx-datatable
-                                :header: OrderID, CustomerID, CustomerName, Product
+                                :header: CustomerID, CustomerName, Product
 
-                                201, 101, John Doe, Laptop
-                                202, 101, John Doe, Mouse
-                                203, 102, Jane Smith, Tablet
+                                101, John Doe, Laptop
+                                101, John Doe, Mouse
+                                102, Jane Smith, Tablet
+                                103, Alice Brown, Keyboard
+                                103, Alice Brown, Monitor
+                                103, Alice Brown, Pen
 
                         .. code-tab:: sql
 
-                            CREATE TABLE Orders(
-                              OrderID INT PRIMARY KEY,
-                              CustomerID INT REFERENCES Customers(CustomerID),
+                            CREATE TABLE CustomerProducts (
+                              CustomerID INT,
                               CustomerName VARCHAR(100),
                               Product VARCHAR(100)
                             );
 
-                    Issue:
-                      "Customer Name" depends only on "Customer ID", not the full primary key ("Order ID", "Customer ID"). This is a partial dependency.
+                    **Explanation**:
 
-                .. grid-item-card:: Normalization to 2NF
+                    - Each row now represents a single product purchased by a customer.
+                    - All columns contain atomic values (no lists or sets).
+                    - The table can be easily queries, updated, and maintained. For example, finding all customers who purchased "Mouse" is now straightforward.
 
-                    Separate customer information into its own table.
+    .. grid-item-card:: Second Normal Form
 
-                    .. tabs::
+        A table is in 2NF if it is in 1NF and every non-prime attribute (i.e. non-primary key attribute) is fully functionally dependent on the entire primary key. This addresses **partial dependencies**, where a non-key attribute depends only on part of a composite key.
 
-                        .. tab:: Data Table
-
-                            .. csv-table:: Orders
-                                :class: sphinx-datatable
-                                :header: OrderID, CustomerID, Product
-
-                                201, 101, Laptop
-                                202, 101, Mouse
-                                203, 102, Tablet
-
-                        .. code-tab:: sql
-
-                            CREATE TABLE Orders (
-                              OrderID INT PRIMARY KEY,
-                              CustomerID INT REFERENCES Customers(CustomerID),
-                              Product VARCHAR(100)
-                            );
-                            
-                    .. tabs::
-
-                        .. tab:: Data Table
-
-                            .. csv-table:: Customers
-                                :class: sphinx-datatable
-                                :header: CustomerID, CustomerName
-
-                                101, John Doe
-                                102, Jane Smith
-
-                        .. code-tab:: sql
-
-                            CREATE TABLE Customers (
-                              CustomerID INT PRIMARY KEY,
-                              CustomerName VARCHAR(100)
-                            );
-
-        .. grid-item-card:: Benefits
-
-            - Eliminates redundancy of customer details.
-
-            - Simplifies data maintenance and updates.
-
-            By moving ``CustomerName`` into a separate ``Customers`` table, we ensure it's only dependent on ``CustomerID`` and eliminate partial dependency on a composite key.
-
-
-Third Normal Form
-^^^^^^^^^^^^^^^^^
-
-A table is in 3NF if it is in 2NF and all the attributes are functionally dependent only on the primary key, there are not **transitive dependencies** (i.e. non-key attributes depending on other non-key attributes).
-
-.. admonition:: Example
-    :class: hint
-
-    .. grid:: 1
-        :gutter: 3
-
-        .. grid-item-card:: Transformation to 3NF
+        .. admonition:: Example
+            :class: hint
 
             .. grid:: 1
-                :class-row: surface
                 :gutter: 3
 
-                .. grid-item-card:: 2NF Table
+                .. grid-item-card:: Transformation to 2NF
 
-                    .. tabs::
+                    .. grid:: 1
+                        :class-row: surface
+                        :gutter: 3
 
-                        .. tab:: Data Table
+                        .. grid-item-card:: 1NF Table
 
-                            .. csv-table:: Orders
-                                :class: sphinx-datatable
-                                :header: OrderID, CustomerID, Product, Supplier
+                            .. tabs::
 
-                                201, 101, Laptop, HP
-                                202, 101, Mouse, Logitech
-                                203, 102, Tablet, Apple
-                        
-                        .. code-tab:: sql
+                                .. tab:: Data Table
 
-                            CREATE TABLE Orders (
-                              OrderID INT PRIMARY KEY,
-                              CustomerID INT,
-                              Product VARCHAR(100),
-                              Supplier VARCHAR(100)
-                            );
+                                    .. csv-table:: Orders
+                                        :class: sphinx-datatable
+                                        :header: OrderID, CustomerID, CustomerName, Product
 
-                    Issue
-                      "Supplier" depends on "Product", not directly on the primary key.
+                                        201, 101, John Doe, Laptop
+                                        202, 101, John Doe, Mouse
+                                        203, 102, Jane Smith, Tablet
 
-                .. grid-item-card:: Normalization to 3NF
+                                .. code-tab:: sql
 
-                    Move product and supplier information to separate tables.
+                                    CREATE TABLE Orders(
+                                      OrderID INT PRIMARY KEY,
+                                      CustomerID INT REFERENCES Customers(CustomerID),
+                                      CustomerName VARCHAR(100),
+                                      Product VARCHAR(100)
+                                    );
 
-                    .. tabs::
+                            Issue:
+                              "Customer Name" depends only on "Customer ID", not the full primary key ("Order ID", "Customer ID"). This is a partial dependency.
 
-                        .. tab:: Data Table
+                        .. grid-item-card:: Normalization to 2NF
 
-                            .. csv-table:: Orders
-                                :class: sphinx-datatable
-                                :header: OrderID, CustomerID, ProductID
+                            Separate customer information into its own table.
 
-                                201, 101, 301
-                                202, 101, 302
-                                203, 102, 303
+                            .. tabs::
 
-                        .. code-tab:: sql
+                                .. tab:: Data Table
 
-                            CREATE TABLE Orders (
-                              OrderID INT PRIMARY KEY,
-                              CustomerID INT REFERENCES Customers(CustomerID),
-                              ProductID INT REFERENCES Products(ProductID)
-                            );
+                                    .. csv-table:: Orders
+                                        :class: sphinx-datatable
+                                        :header: OrderID, CustomerID, Product
 
-                    .. tabs::
+                                        201, 101, Laptop
+                                        202, 101, Mouse
+                                        203, 102, Tablet
 
-                        .. tab:: Data Table
+                                .. code-tab:: sql
 
-                            .. csv-table:: Products
-                                :class: sphinx-datatable
-                                :header: ProductID, ProductName, SupplierID
+                                    CREATE TABLE Orders (
+                                      OrderID INT PRIMARY KEY,
+                                      CustomerID INT REFERENCES Customers(CustomerID),
+                                      Product VARCHAR(100)
+                                    );
+                                    
+                            .. tabs::
 
-                                301, Laptop, 401
-                                302, Mouse, 402
-                                303, Tablet, 403
+                                .. tab:: Data Table
 
-                        .. code-tab:: sql
+                                    .. csv-table:: Customers
+                                        :class: sphinx-datatable
+                                        :header: CustomerID, CustomerName
 
-                            CREATE TABLE Products (
-                              ProductID INT PRIMARY KEY,
-                              ProductName VARCHAR(100),
-                              SupplierID INT REFERENCES Suppliers(SupplierID)
-                            );
+                                        101, John Doe
+                                        102, Jane Smith
 
-                    .. tabs::
+                                .. code-tab:: sql
 
-                        .. tab:: Data Table
+                                    CREATE TABLE Customers (
+                                      CustomerID INT PRIMARY KEY,
+                                      CustomerName VARCHAR(100)
+                                    );
 
-                            .. csv-table:: Suppliers
-                                :class: sphinx-datatable
-                                :header: SupplierID, SupplierName
+                .. grid-item-card:: Benefits
 
-                                401, HP
-                                402, Logitech
-                                403, Apple
+                    - Eliminates redundancy of customer details.
 
-                        .. code-tab:: sql
+                    - Simplifies data maintenance and updates.
 
-                            CREATE TABLE Suppliers(
-                              SupplierID INT PRIMARY KEY,
-                              SupplierName VARCHAR(100)
-                            );
+                    By moving ``CustomerName`` into a separate ``Customers`` table, we ensure it's only dependent on ``CustomerID`` and eliminate partial dependency on a composite key.
 
-        .. grid-item-card:: Benefits
+    .. grid-item-card:: Third Normal Form
 
-            Removes transitive dependencies.
+        A table is in 3NF if it is in 2NF and all the attributes are functionally dependent only on the primary key, there are not **transitive dependencies** (i.e. non-key attributes depending on other non-key attributes).
 
-            Reduces data duplication.
+        .. admonition:: Example
+            :class: hint
 
-            Improves data integrity and maintainability.
-        
-    This transformation improves maintainability and aligns with best practices for how to normalize a database effectively.
+            .. grid:: 1
+                :gutter: 3
 
-    Since ``Supplier`` depends on ``Product`` and not directly on the primary key (``OrderID``), we isolate it into a new ``Suppliers`` table and reference it via the ``Products`` table. This removes transitive dependencies and aligns with 3NF rules.
+                .. grid-item-card:: Transformation to 3NF
 
+                    .. grid:: 1
+                        :class-row: surface
+                        :gutter: 3
 
-Boyce-Codd Normal Form
-^^^^^^^^^^^^^^^^^^^^^^
+                        .. grid-item-card:: 2NF Table
 
-BCNF is a stricter version of 3NF. A table is in BCNF if, for every non-trivial functional dependency X → Y, X is a superkey. In other words, every determinant must be a candidate key.
+                            .. tabs::
 
-.. admonition:: When is BCNF Needed?
-    :class: tip
+                                .. tab:: Data Table
 
-    BCNF addresses certain edge cases where 3NF does not eliminate all redundancy, particularly when there are overlapping candidate keys or complex dependencies.
+                                    .. csv-table:: Orders
+                                        :class: sphinx-datatable
+                                        :header: OrderID, CustomerID, Product, Supplier
 
-.. admonition:: Example
-    :class: hint
+                                        201, 101, Laptop, HP
+                                        202, 101, Mouse, Logitech
+                                        203, 102, Tablet, Apple
+                                
+                                .. code-tab:: sql
 
-    Suppose we have a university database that tracks which students are enrolled in which courses, adn who teaches each course. The initial table structure is as follows:
+                                    CREATE TABLE Orders (
+                                      OrderID INT PRIMARY KEY,
+                                      CustomerID INT,
+                                      Product VARCHAR(100),
+                                      Supplier VARCHAR(100)
+                                    );
 
-    .. tabs::
+                            Issue
+                              "Supplier" depends on "Product", not directly on the primary key.
 
-        .. tab:: Data Table
+                        .. grid-item-card:: Normalization to 3NF
 
-            .. csv-table:: StudentCourses
-                :class: sphinx-datatable
-                :header: StudentID, Course, Instructor
+                            Move product and supplier information to separate tables.
 
-                1, Math, Dr. Smith
-                2, Math, Dr. Smith
-                3, History, Dr. Jones
-                4, History, Dr. Jones
+                            .. tabs::
 
-        .. code-tab:: sql
+                                .. tab:: Data Table
 
-            CREATE TABLE StudentCourses (
-              StudentID INT PRIMARY KEY,
-              Course VARCHAR(100),
-              Instructor VARCHAR(100)
-            );
+                                    .. csv-table:: Orders
+                                        :class: sphinx-datatable
+                                        :header: OrderID, CustomerID, ProductID
 
-    .. admonition:: Functional Dependencies in the Table
+                                        201, 101, 301
+                                        202, 101, 302
+                                        203, 102, 303
 
-        1. ``(StudentID, Course)`` → ``Instructor``
-            Each unique combination of student and course determines the instructor for that course.
+                                .. code-tab:: sql
 
-        2. ``Course`` → ``Instructor``
-            Each course is always taught by the same instructor.
+                                    CREATE TABLE Orders (
+                                      OrderID INT PRIMARY KEY,
+                                      CustomerID INT REFERENCES Customers(CustomerID),
+                                      ProductID INT REFERENCES Products(ProductID)
+                                    );
 
-    .. admonition:: Candidate Keys
+                            .. tabs::
 
-        The only candidate key in this table is the cmposite key ``(StudentID, Course)``, since both are needed to uniquely identify a row.
+                                .. tab:: Data Table
 
-    .. admonition:: Why is this Table in 3NF?
-        :class: tip
+                                    .. csv-table:: Products
+                                        :class: sphinx-datatable
+                                        :header: ProductID, ProductName, SupplierID
 
-        All non-prime attributes (``Instructor``) are fully functionally dependent on the candidate key ``(StudentID, Course)``.
+                                        301, Laptop, 401
+                                        302, Mouse, 402
+                                        303, Tablet, 403
 
-        There are no transitive dependencies (i.e. no non-prime attribute depends on another non-prime attribute through the candidate key).
+                                .. code-tab:: sql
 
-    .. admonition:: Why is this Table NOT in BCNF?
-        :class: tip
+                                    CREATE TABLE Products (
+                                      ProductID INT PRIMARY KEY,
+                                      ProductName VARCHAR(100),
+                                      SupplierID INT REFERENCES Suppliers(SupplierID)
+                                    );
 
-        The functional dependency ``Course`` → Instructor exists, but ``Course`` is not a superkey (it does not uniquely identify a row in the table).
+                            .. tabs::
 
-        BCNF requires that for every non-trivial functional dependency X → Y, X must be a superkey. Here, ``Course`` is not a superkey, so this violates BCNF.
+                                .. tab:: Data Table
 
-    .. admonition:: How to Normalize to BCNF
+                                    .. csv-table:: Suppliers
+                                        :class: sphinx-datatable
+                                        :header: SupplierID, SupplierName
 
-        To resolve the BCNF violation, we need to decompose the table so that every determinant is a candidate key in its respective table. This is done by splitting the original table into two separate tables.
+                                        401, HP
+                                        402, Logitech
+                                        403, Apple
 
-        .. tabs::
+                                .. code-tab:: sql
 
-            .. tab:: Data Table
+                                    CREATE TABLE Suppliers(
+                                      SupplierID INT PRIMARY KEY,
+                                      SupplierName VARCHAR(100)
+                                    );
 
-                .. csv-table:: StudentCourses
-                    :class: sphinx-datatable
-                    :header: StudentID, Course
+                .. grid-item-card:: Benefits
 
-                    1, Math
-                    2, Math
-                    3, History
-                    4, History
+                    Removes transitive dependencies.
 
-            .. code-tab:: sql
+                    Reduces data duplication.
 
-                CREATE TABLE StudentCourses(
-                  StudentID INT PRIMARY KEY,
-                  Course VARCHAR(100) REFERENCES CourseInstructors(Course)
-                );
+                    Improves data integrity and maintainability.
+                
+            This transformation improves maintainability and aligns with best practices for how to normalize a database effectively.
 
-        .. tabs::
+            Since ``Supplier`` depends on ``Product`` and not directly on the primary key (``OrderID``), we isolate it into a new ``Suppliers`` table and reference it via the ``Products`` table. This removes transitive dependencies and aligns with 3NF rules.
 
-            .. tab:: Data Table
+    .. grid-item-card:: Boyce-Codd Normal Form
 
-                .. csv-table:: CourseInstructors
-                    :class: sphinx-datatable
-                    :header: Course, Instructor
+        BCNF is a stricter version of 3NF. A table is in BCNF if, for every non-trivial functional dependency X → Y, X is a superkey. In other words, every determinant must be a candidate key.
 
-                    Math, Dr. Smith
-                    History, Dr. Jones
+        .. admonition:: When is BCNF Needed?
+            :class: tip
 
-            .. code-tab:: sql
+            BCNF addresses certain edge cases where 3NF does not eliminate all redundancy, particularly when there are overlapping candidate keys or complex dependencies.
 
-                CREATE TABLE CourseInstructors(
-                  Course VARCHAR(100) PRIMARY KEY,
-                  Instructor VARCHAR(100)
-                );
+        .. admonition:: Example
+            :class: hint
 
-    .. admonition:: Resulting Structure and Benefits
+            Suppose we have a university database that tracks which students are enrolled in which courses, adn who teaches each course. The initial table structure is as follows:
 
-        All functional dependencies in both tables have determinants that are candidate keys, so both tables are in BCNF.
-        
-        Data redundancy is reduced: the instructor for each course is stored only once, rather than repeated for every student enrolled in the course.
+            .. tabs::
 
-        Updates are easier and less error-prone: if an instructor changes for a course, you only need to update one row in the ``CourseInstructors`` table.
+                .. tab:: Data Table
+
+                    .. csv-table:: StudentCourses
+                        :class: sphinx-datatable
+                        :header: StudentID, Course, Instructor
+
+                        1, Math, Dr. Smith
+                        2, Math, Dr. Smith
+                        3, History, Dr. Jones
+                        4, History, Dr. Jones
+
+                .. code-tab:: sql
+
+                    CREATE TABLE StudentCourses (
+                      StudentID INT PRIMARY KEY,
+                      Course VARCHAR(100),
+                      Instructor VARCHAR(100)
+                    );
+
+            .. admonition:: Functional Dependencies in the Table
+
+                1. ``(StudentID, Course)`` → ``Instructor``
+                    Each unique combination of student and course determines the instructor for that course.
+
+                2. ``Course`` → ``Instructor``
+                    Each course is always taught by the same instructor.
+
+            .. admonition:: Candidate Keys
+
+                The only candidate key in this table is the cmposite key ``(StudentID, Course)``, since both are needed to uniquely identify a row.
+
+            .. admonition:: Why is this Table in 3NF?
+                :class: tip
+
+                All non-prime attributes (``Instructor``) are fully functionally dependent on the candidate key ``(StudentID, Course)``.
+
+                There are no transitive dependencies (i.e. no non-prime attribute depends on another non-prime attribute through the candidate key).
+
+            .. admonition:: Why is this Table NOT in BCNF?
+                :class: tip
+
+                The functional dependency ``Course`` → Instructor exists, but ``Course`` is not a superkey (it does not uniquely identify a row in the table).
+
+                BCNF requires that for every non-trivial functional dependency X → Y, X must be a superkey. Here, ``Course`` is not a superkey, so this violates BCNF.
+
+            .. admonition:: How to Normalize to BCNF
+
+                To resolve the BCNF violation, we need to decompose the table so that every determinant is a candidate key in its respective table. This is done by splitting the original table into two separate tables.
+
+                .. tabs::
+
+                    .. tab:: Data Table
+
+                        .. csv-table:: StudentCourses
+                            :class: sphinx-datatable
+                            :header: StudentID, Course
+
+                            1, Math
+                            2, Math
+                            3, History
+                            4, History
+
+                    .. code-tab:: sql
+
+                        CREATE TABLE StudentCourses(
+                          StudentID INT PRIMARY KEY,
+                          Course VARCHAR(100) REFERENCES CourseInstructors(Course)
+                        );
+
+                .. tabs::
+
+                    .. tab:: Data Table
+
+                        .. csv-table:: CourseInstructors
+                            :class: sphinx-datatable
+                            :header: Course, Instructor
+
+                            Math, Dr. Smith
+                            History, Dr. Jones
+
+                    .. code-tab:: sql
+
+                        CREATE TABLE CourseInstructors(
+                          Course VARCHAR(100) PRIMARY KEY,
+                          Instructor VARCHAR(100)
+                        );
+
+            .. admonition:: Resulting Structure and Benefits
+
+                All functional dependencies in both tables have determinants that are candidate keys, so both tables are in BCNF.
+                
+                Data redundancy is reduced: the instructor for each course is stored only once, rather than repeated for every student enrolled in the course.
+
+                Updates are easier and less error-prone: if an instructor changes for a course, you only need to update one row in the ``CourseInstructors`` table.
 
 
 Normalization versus Denormalization

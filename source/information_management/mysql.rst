@@ -840,41 +840,60 @@ Dropping a Table
 Advantages versus Disadvantages of RDBMS
 ++++++++++++++++++++++++++++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Advantages
 
-        Easy to Manage
-          Each table can be independently manipulated without affecting others.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
+            
+            .. grid-item-card:: Easy to Manage
 
-        Security
-          It is more secure consisting of multiple levels of security. Access of data shared can be limited.
+                Each table can be independently manipulated without affecting others.
 
-        Flexible
-          Updating of data can be done at a single point without making amendments at multiple files.
+            .. grid-item-card:: Security
 
-        Users
-          Some RDBMS supports client-side architecture storing multiple users together. Facilitates storage and retrieval of large amount of data.
+                It is more secure consisting of multiple levels of security. Access of data shared can be limited.
 
-        Fault Tolerance
-          Replication of databases provides simultaneous access and helps the system recover in case of disasters, such as power failures.
+            .. grid-item-card:: Flexible
 
-        Data consistency is ensured as RDBMS is based on ACID properties for data transactions.
+                Updating of data can be done at a single point without making amendments at multiple files.
+
+            .. grid-item-card:: Users
+
+                Some RDBMS supports client-side architecture storing multiple users together. Facilitates storage and retrieval of large amount of data.
+
+            .. grid-item-card:: Fault Tolerance
+
+                Replication of databases provides simultaneous access and helps the system recover in case of disasters, such as power failures.
+
+            .. grid-item-card:: 
+                
+                Data consistency is ensured as RDBMS is based on ACID properties for data transactions.
 
     .. grid-item-card:: Disadvantages
 
-        High Cost and Extensive Hardware
-          Huge costs and setups are required to make these systems functional.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        Scalability
-          In case of addition of more data, servers along with additional power, and memory are required.
+            .. grid-item-card:: High Cost and Extensive Hardware
 
-        Complexity
-          Voluminous data creates complexity in understanding of relations and may lower down the performance.
+                Huge costs and setups are required to make these systems functional.
 
-        Structured Limits
-          The fields or columns of a relational databse system is enclosed within various limits, which may lead to loss of data.
+            .. grid-item-card:: Scalability
+
+                In case of addition of more data, servers along with additional power, and memory are required.
+
+            .. grid-item-card:: Complexity
+
+                Voluminous data creates complexity in understanding of relations and may lower down the performance.
+
+            .. grid-item-card:: Structured Limits
+
+                The fields or columns of a relational databse system is enclosed within various limits, which may lead to loss of data.
 
 
 NoSQL versus RDBMS

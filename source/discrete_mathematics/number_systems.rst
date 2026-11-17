@@ -37,169 +37,167 @@ Binary ``1101`` in decimal: :math:`8 + 4 + 0 + 1 = 13`
 Octal to Decimal
 ~~~~~~~~~~~~~~~~
 
+.. grid:: 1
+    :gutter: 3
 
-Method A
---------
+    .. grid-item-card:: Method A
 
-Starting from the right, multiply the digits with the corresponding powers of ``8`` and add the results.
+        Starting from the right, multiply the digits with the corresponding powers of ``8`` and add the results.
 
-To convert octal number ``15`` to decimal:
+        To convert octal number ``15`` to decimal:
 
-.. math::
+        .. math::
 
-    1|5 → 1 * (8^1)|5 * (8^0)
+            1|5 → 1 * (8^1)|5 * (8^0)
 
-    8|5 → 8 + 5
-    
-    13
+            8|5 → 8 + 5
+            
+            13
 
-Octal number ``15`` in decimal: ``13``
+        Octal number ``15`` in decimal: ``13``
 
+    .. grid-item-card:: Method B
 
-Method B
---------
+        Write the three-digit binary representation of each octal digit side-by-side.
 
-Write the three-digit binary representation of each octal digit side-by-side.
+        .. math::
 
-.. math::
+            0 = 000
 
-    0 = 000
+            1 = 001
+            
+            2 = 010
 
-    1 = 001
-    
-    2 = 010
+            3 = 011
+            
+            4 = 100
+            
+            5 = 101
+            
+            6 = 110
+            
+            7 = 111
 
-    3 = 011
-    
-    4 = 100
-    
-    5 = 101
-    
-    6 = 110
-    
-    7 = 111
+        To convert octal number ``15`` to binary:
 
-To convert octal number ``15`` to binary:
+        .. math::
 
-.. math::
+            15 → 1|5
 
-    15 → 1|5
+            1|5 → 001|101
 
-    1|5 → 001|101
+            001101
 
-    001101
+        Octal number ``15`` in binary: ``001101``
 
-Octal number ``15`` in binary: ``001101``
+        `Convert binary to decimal <#binary-to-decimal>`_.
 
-`Convert binary to decimal <#binary-to-decimal>`_.
-
-Binary ``001101`` in decimal: ``13``
+        Binary ``001101`` in decimal: ``13``
 
 
 Hexadecimal to Decimal
 ~~~~~~~~~~~~~~~~~~~~~~
 
+.. grid:: 1
+    :gutter: 3
 
-Method A
---------
+    .. grid-item-card:: Method A
 
-Convert each digit to its corresponding decimal value. Multiply each digits by powers of ``16``, starting from the rightmost, and sum the products.
+        Convert each digit to its corresponding decimal value. Multiply each digits by powers of ``16``, starting from the rightmost, and sum the products.
 
-.. math::
+        .. math::
 
-    0 = 0
-    
-    1 = 1
+            0 = 0
+            
+            1 = 1
 
-    2 = 2
+            2 = 2
 
-    3 = 3
+            3 = 3
 
-    4 = 4
+            4 = 4
 
-    5 = 5
-    
-    6 = 6
+            5 = 5
+            
+            6 = 6
 
-    7 = 7
+            7 = 7
 
-    8 = 8
+            8 = 8
 
-    9 = 9
+            9 = 9
 
-    10 = A
+            10 = A
 
-    11 = B
+            11 = B
 
-    12 = C
+            12 = C
 
-    13 = D
+            13 = D
 
-    14 = E
+            14 = E
 
-    15 = F
+            15 = F
 
-To convert hexadecimal ``0xD`` to decimal:
+        To convert hexadecimal ``0xD`` to decimal:
 
-.. math::
+        .. math::
 
-    |D → |13
-    |13 → |13 * (16 ^ 0)
-    13
+            |D → |13
+            |13 → |13 * (16 ^ 0)
+            13
 
-Hexadecimal ``0xD`` in decimal: ``13``
+        Hexadecimal ``0xD`` in decimal: ``13``
 
+    .. grid-item-card:: Method B
 
-Method B
---------
+        Convert each digit to its corresponding binary value.
 
-Convert each digit to its corresponding binary value.
+        .. math::
 
-.. math::
+            0 = 0000
 
-    0 = 0000
+            1 = 0001
 
-    1 = 0001
+            2 = 0010
 
-    2 = 0010
+            3 = 0011
 
-    3 = 0011
+            4 = 0100
 
-    4 = 0100
+            5 = 0101
 
-    5 = 0101
+            6 = 0110
 
-    6 = 0110
+            7 = 0111
 
-    7 = 0111
+            8 = 1000
 
-    8 = 1000
+            9 = 1001
 
-    9 = 1001
+            A = 1010
 
-    A = 1010
+            B = 1011
 
-    B = 1011
+            C = 1100
 
-    C = 1100
+            D = 1101
 
-    D = 1101
+            E = 1110
 
-    E = 1110
+            F = 1111
 
-    F = 1111
+        Convert hexadecimal ``0xD`` to binary:
 
-Convert hexadecimal ``0xD`` to binary:
+        .. math::
 
-.. math::
+            D → 1101
 
-    D → 1101
+        Hexadecimal ``0xD`` in binary: ``1101``
 
-Hexadecimal ``0xD`` in binary: ``1101``
+        `Convert binary to decimal <#binary-to-decimal>`_.
 
-`Convert binary to decimal <#binary-to-decimal>`_.
-
-Binary ``1101`` in decimal: ``13``
+        Binary ``1101`` in decimal: ``13``
 
 
 Decimal to Binary

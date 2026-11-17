@@ -10,7 +10,7 @@ A **circular singly linked list** is a linear data structure where the last node
       Traversal does not terminate automatically; it cycles indefinitely unless explicitly stopped.
 
     Tail Optimization
-      Keeping a pointer to the ``Tail`` (last node) instead of the ``Head`` allows :math:`O(1)` constant time access to both the first node (``Tail->next``) nad the last node (``Tail``).
+      Keeping a pointer to the ``Tail`` (last node) instead of the ``Head`` allows :math:`O(1)` constant time access to both the first node (``Tail->next``) and the last node (``Tail``).
 
     Memory Efficiency
       It consumes less memory per node than a `circular doubly linked list <./doubly>`_ because it only stores one address pointer instead of two.
@@ -20,7 +20,6 @@ Advantages and Disadvantages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
     
     .. grid-item-card:: Advantages

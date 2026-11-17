@@ -8,7 +8,7 @@ Unlike traditional programs that primarily process text and numerical data, grap
 .. admonition:: Example
     :class: hint
 
-    A program that calculates the average grade of a student produces a numerical result. A graphics program can display that result inside a colore dbox, draw a bar chart of student grades, or create an interactive dashboard.
+    A program that calculates the average grade of a student produces a numerical result. A graphics program can display that result inside a colored box, draw a bar chart of student grades, or create an interactive dashboard.
 
 .. admonition:: Objectives
     :class: tip
@@ -86,7 +86,7 @@ In more advanced systems, graphics processing also involves clipping, transforma
 Languages and Libraries
 +++++++++++++++++++++++
 
-A programming language provides the instructions, while a graphics library or framework provides specialized functions for drwaing and manipulating visual objects.
+A programming language provides the instructions, while a graphics library or framework provides specialized functions for drawing and manipulating visual objects.
 
 .. admonition:: Example
     :class: hint
@@ -120,7 +120,7 @@ A point is commonly represented as ``(x, y)``.
 .. admonition:: Example
     :class: hint
 
-    The coordinate ``(100, 50)`` identifies a position ``100`` unites horizontally and ``50`` units vertically from the coordiante system's origin, assuming a conventional screen-coordinate system.
+    The coordinate ``(100, 50)`` identifies a position ``100`` unites horizontally and ``50`` units vertically from the coordinate system's origin, assuming a conventional screen-coordinate system.
 
 
 Cartesian Coordiantes Versus Screen Coordinates
@@ -361,7 +361,7 @@ Defining a shape determines its geometry, but drawing attributes determine how t
 
     .. grid-item-card:: Line Thickness
 
-        Line thickness determines how wide a lien or shape outline appears. Thicker lines may emphasize important objects, while thinner lines are often used for details and grids.
+        Line thickness determines how wide a line or shape outline appears. Thicker lines may emphasize important objects, while thinner lines are often used for details and grids.
 
     .. grid-item-card:: Transparency
 

@@ -5,7 +5,7 @@ Modern computer graphics is not limited to displaying static images, shapes, and
 
 Two important concepts that make computer graphics more dynamic are **animation** and **interaction**.
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Animation
@@ -40,7 +40,7 @@ Two important concepts that make computer graphics more dynamic are **animation*
 
     .. grid-item-card:: Difference between Animation and Interaction
 
-        .. grid:: 1 2 2 2
+        .. grid:: 1
             :class-row: surface
             :gutter: 3
 
@@ -122,7 +122,7 @@ There are several types of animation used in computer graphics and multimedia ap
 
         Keyframe animation defines important positions or states of an object at specific points in time.
 
-        The computer generates the intermediate frames between the keyframes. THis process is called **tweening** or **in-betweening**.
+        The computer generates the intermediate frames between the keyframes. This process is called **tweening** or **in-betweening**.
 
         .. admonition:: Examples
             :class: hint
@@ -158,7 +158,7 @@ Principles of Animation
 
 The principles of animation help develoeprs create movements that appear natural, realistic, and visually appealing.
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Squash and Stretch

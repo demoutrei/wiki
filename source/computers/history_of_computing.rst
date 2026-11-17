@@ -5,7 +5,7 @@ History of Computing
 Timeline Creation
 ^^^^^^^^^^^^^^^^^
 
-.. grid:: auto
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Abacus (2700-2300 BC)
@@ -176,7 +176,7 @@ Timeline Creation
 Generations of Computer
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. grid:: auto
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: First Generation (1940-1956)

@@ -50,7 +50,7 @@ Discrete Mathematics
         :link: ./propositions
         :link-type: url
 
-        Propositional logic is concerned with statements to which the truth values, true and false, can be assigend. The purpose is to analyze these statements either individually or in a composite manner.
+        Propositional logic is concerned with statements to which the truth values, true and false, can be assigned. The purpose is to analyze these statements either individually or in a composite manner.
 
     .. grid-item-card:: Set Theory
         :link: ./set_theory

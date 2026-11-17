@@ -28,42 +28,60 @@ A **tree** is a non-linear, hierarchical data structure composed of collection o
 Advantages and Disadvantages
 ++++++++++++++++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Advantages
 
-        Efficient Operations
-          In self-balancing trees (such as AVL or Red-Black trees), searching, insertion, and deletion take :math:`O(log n)` time complexity. This is significantly faster than the :math:`O(n)` linear scan required for `arrays <../array>`_ or `linked lists <../linked_list>`_.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        Natural Hierarchical Organization
-          Trees inherently represent structural relationships. This makes them the perfect structure for organizing file directories, HTML DOM trees, organization charts, and taxonomies.
+            .. grid-item-card:: Efficient Operations
 
-        Dynamic and Flexible Sizing
-          Trees do not rqeuire a predetermined size like `array <../array>`_ do. They grow and shrink dynamically as nodes are added or removed, utilizing memory efficiently as needed.
+                In self-balancing trees (such as AVL or Red-Black trees), searching, insertion, and deletion take :math:`O(log n)` time complexity. This is significantly faster than the :math:`O(n)` linear scan required for `arrays <../array>`_ or `linked lists <../linked_list>`_.
 
-        Optimized for Quick Subtree Manipulation
-          Because subtrees are structurally independent, moving, deleting, or re-attaching large blocks of data requires only changing a few pointers rather than moving individual items in memory.
+            .. grid-item-card:: Natural Hierarchical Organization
 
-        Ideal for Sorting and Priority Systems
-          Variants like heaps allow :math:`O(1)` access to the highest or lowest priority element, which powers efficient sorting algorithms (heapsort) and priority queues.
+                Trees inherently represent structural relationships. This makes them the perfect structure for organizing file directories, HTML DOM trees, organization charts, and taxonomies.
+
+            .. grid-item-card:: Dynamic and Flexible Sizing
+
+                Trees do not rqeuire a predetermined size like `array <../array>`_ do. They grow and shrink dynamically as nodes are added or removed, utilizing memory efficiently as needed.
+
+            .. grid-item-card:: Optimized for Quick Subtree Manipulation
+
+                Because subtrees are structurally independent, moving, deleting, or re-attaching large blocks of data requires only changing a few pointers rather than moving individual items in memory.
+
+            .. grid-item-card:: Ideal for Sorting and Priority Systems
+
+                Variants like heaps allow :math:`O(1)` access to the highest or lowest priority element, which powers efficient sorting algorithms (heapsort) and priority queues.
 
     .. grid-item-card:: Disadvantages
 
-        Memory Overhead
-          Every node in a tree requires extra memory to store pointers to its child nodes (e.g. ``left`` and ``right`` references in a binary tree) alongside the actual data.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        The Risk of Becoming Unbalanced
-          If elements are inserted in a sorted or skewed order, a tree can become completley unbalanced. WHen this happens, its shape degenerates into a linear structure (like a `linked list <../linked_list>`_), dropping its performance efficiency from :math:`O(log n)` down to a sluggish :math:`O(n)`.
+            .. grid-item-card:: Memory Overhead
 
-        High Complexity
-          Implementing and maintaining trees---especially self-balancing variations like B-trees or AVL trees---requires complex logic and algorithms, making them harder to debug and code correctly than linear structures.
+                Every node in a tree requires extra memory to store pointers to its child nodes (e.g. ``left`` and ``right`` references in a binary tree) alongside the actual data.
 
-        No Random Access
-          You cannot instantly access an element at a specific index (like ``array[5]``). To find a node, you must traverse down from the root via pointers, which takes time.
+            .. grid-item-card:: The Risk of Becoming Unbalanced
 
-        Outperformed by Hash Tables for Basic Lookup
-          If an application only needs simple lookup, insertion, and deletion without consideration for sorted order or hierarchy, `hash tables <../hash_map>`_ are usually a faster choice since they operate in :math:`O(1)` constant time.
+                If elements are inserted in a sorted or skewed order, a tree can become completley unbalanced. When this happens, its shape degenerates into a linear structure (like a `linked list <../linked_list>`_), dropping its performance efficiency from :math:`O(log n)` down to a sluggish :math:`O(n)`.
+
+            .. grid-item-card:: High Complexity
+
+                Implementing and maintaining trees---especially self-balancing variations like B-trees or AVL trees---requires complex logic and algorithms, making them harder to debug and code correctly than linear structures.
+
+            .. grid-item-card:: No Random Access
+
+                You cannot instantly access an element at a specific index (like ``array[5]``). To find a node, you must traverse down from the root via pointers, which takes time.
+
+            .. grid-item-card:: Outperformed by Hash Tables for Basic Lookup
+
+                If an application only needs simple lookup, insertion, and deletion without consideration for sorted order or hierarchy, `hash tables <../hash_map>`_ are usually a faster choice since they operate in :math:`O(1)` constant time.
 
 
 Core Operations
@@ -102,11 +120,12 @@ Core Operations
 
     .. grid-item-card:: Traversal
 
-        Traversal is the systematic process of visiting every node exactly once. IT is primarily split into Depth-First and Breadth-First approaches.
+        Traversal is the systematic process of visiting every node exactly once. It is primarily split into Depth-First and Breadth-First approaches.
 
         **Time Complexity**: :math:`O(n)`
 
         .. grid:: 1
+            :class-row: surface
             :gutter: 3
 
             .. grid-item-card:: Depth-First Search (DFS)
@@ -160,6 +179,7 @@ Types of Trees
         Based on structural layout, binary trees are further categorized into:
 
         .. grid:: 1
+            :class-row: surface
             :gutter: 3
 
             .. grid-item-card:: Full (Strict) Binary Tree
@@ -185,7 +205,7 @@ Types of Trees
         .. admonition:: Key Rule
             :class: important
 
-            For any given node, the value of the left subtree must be less than the parent, and the valueo f the right subtree must be greater.
+            For any given node, the value of the left subtree must be less than the parent, and the value of the right subtree must be greater.
 
         .. admonition:: Time Complexity
             :class: tip
@@ -197,6 +217,7 @@ Types of Trees
         To prevent a BST from turning into a performance-draining skewed tree, self-balancing trees automatically adjust their structure during insertions and deletions.
 
         .. grid:: 1
+            :class-row: surface
             :gutter: 3
 
             .. grid-item-card:: AVL Tree
@@ -212,6 +233,7 @@ Types of Trees
         An **N-ary** tree generalizes the binary tree concept, allowing up to :math:`N` children per node.
 
         .. grid:: 1
+            :class-row: surface
             :gutter: 3
 
             .. grid-item-card:: B-Tree & B+ Tree

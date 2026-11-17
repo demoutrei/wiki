@@ -278,7 +278,7 @@ Median:
 - **CPU**: $1.50 per CPU, **92% above** `baseline <#baseline>`_
 - **RAM**: $0.85 per GB, **118% above** `baseline <#baseline>`_
 
-It also appears that anything below Ultimate does not come with a low traffic IP and based on the `help articles provided <https://help.sparkedhost.com/en/article/what-is-a-low-traffic-dedicated-ip-and-how-do-i-order-it-qe02mm/>`_ the cost of a low traffic is ~$1.69 a month and a dedicated is $7.93 a month (**239% to 317% markup**), `Hetzner`_ is $1.90 a month per additional with a $6 setup feee and OVH is $2.34 a month.
+It also appears that anything below Ultimate does not come with a low traffic IP and based on the `help articles provided <https://help.sparkedhost.com/en/article/what-is-a-low-traffic-dedicated-ip-and-how-do-i-order-it-qe02mm/>`_ the cost of a low traffic is ~$1.69 a month and a dedicated is $7.93 a month (**239% to 317% markup**), `Hetzner`_ is $1.90 a month per additional with a $6 setup fee and OVH is $2.34 a month.
 
 
 IP Address Limitation

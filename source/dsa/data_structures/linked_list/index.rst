@@ -30,11 +30,16 @@ Anatomy of a Node
 
 Each node in a linked list consists of two essential parts:
 
-Data
-  The actual value or information stored in the node.
+.. grid:: 1 2 2 2
+    :gutter: 3
 
-Next
-  A pointer or reference containing the memory address of the subsequent node.
+    .. grid-item-card:: Data
+
+        The actual value or information stored in the node.
+
+    .. grid-item-card:: Next
+      
+        A pointer or reference containing the memory address of the subsequent node.
 
 The list begins at a reference point called the ``Head``. The final node points to ``Null``, indicating the end of the sequence.
 

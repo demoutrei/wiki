@@ -13,28 +13,38 @@ These terms are often confused but have distinct definitions:
 
     | Space Complexity = Input Space + Auxiliary Space
 
-Input Space
-  The memory required to store the original input data.
+.. grid:: 1 2 2 2
+    :gutter: 3
 
-Auxiliary Space
-  The temporary or extra memory allocated by the algorithm to solve the problem (e.g. local variables, dynamically allocated memory, scratchpad arrays).
+    .. grid-item-card:: Input Space
+
+        The memory required to store the original input data.
+
+    .. grid-item-card:: Auxiliary Space
+
+        The temporary or extra memory allocated by the algorithm to solve the problem (e.g. local variables, dynamically allocated memory, scratchpad arrays).
 
 Components of Space Memory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An algorithm allocates memory across two core components:
 
-Fixed Part (:math:`O(1)`)
-  Memory required by the program that remains constant regardless of the input size.
+.. grid:: 1 2 2 2
+    :gutter: 3
 
-  - Instruction space (the compiled code itself).
-  - Simple variables and constants
+    .. grid-item-card:: Fixed Part (:math:`O(1)`)
 
-Variable Part
-  Memory required by components that scale as the input data scales.
+          Memory required by the program that remains constant regardless of the input size.
 
-  - **Dynamic data structures**: arrays, trees, or tables whose sizes match the input load.
-  - **Recursion stack space**: each active function call in recursion pushes stack frames containing arguments and local variables onto the call stack.
+          - Instruction space (the compiled code itself).
+          - Simple variables and constants
+
+    .. grid-item-card:: Variable Part
+
+        Memory required by components that scale as the input data scales.
+
+        - **Dynamic data structures**: arrays, trees, or tables whose sizes match the input load.
+        - **Recursion stack space**: each active function call in recursion pushes stack frames containing arguments and local variables onto the call stack.
 
 
 Common Complexities
@@ -42,45 +52,53 @@ Common Complexities
 
 Ordered by efficiency:
 
-Constant Space :math:`O(1)`
-  Memory stays exactly the same regardless of input size.
+.. grid:: 1
+    :gutter: 3
 
-  .. admonition:: Common Use Case / Triggers
-      :class: hint
+    .. grid-item-card:: Constant Space :math:`O(1)`
 
-      In-place mutations, primitive variables.
+          Memory stays exactly the same regardless of input size.
 
-Logarithmic Space :math:`O(log n)`
-  Memory grows slowly, scaling with the height of balanced tree paths.
+          .. admonition:: Common Use Case / Triggers
+              :class: hint
 
-  .. admonition:: Common Use Case / Triggers
-      :class: hint
+              In-place mutations, primitive variables.
 
-      Iterative halving, balanced search trees.
+    .. grid-item-card:: Logarithmic Space :math:`O(log n)`
 
-Linear Space :math:`O(n)`
-  Memory grows at a direct 1:1 ratio with the input size.
+        Memory grows slowly, scaling with the height of balanced tree paths.
 
-  .. admonition:: Common Use Case / Triggers
-      :class: hint
+        .. admonition:: Common Use Case / Triggers
+            :class: hint
 
-      Cloning arrays, recursion stacks, linear data structures.
+            Iterative halving, balanced search trees.
 
-Linearithmic Space :math:`O(n log n)`
-  Memory grows slightly faster than linear.
+    .. grid-item-card:: Linear Space :math:`O(n)`
 
-  .. admonition:: Common Use Case / Triggers
-      :class: hint
+        Memory grows at a direct 1:1 ratio with the input size.
 
-      Sorting with deep allocation or multi-level tracking.
+        .. admonition:: Common Use Case / Triggers
+            :class: hint
 
-Quadratic Space :math:`O(n ^ 2)`
-  Memory scales by the square of input size.
+            Cloning arrays, recursion stacks, linear data structures.
 
-  .. admonition:: Common Use Case / Triggers
-      :class: hint
+    .. grid-item-card:: Linearithmic Space :math:`O(n log n)`
 
-      2D matrices, dense graphs, nested dynamic tracking.
+        Memory grows slightly faster than linear.
+
+        .. admonition:: Common Use Case / Triggers
+            :class: hint
+
+            Sorting with deep allocation or multi-level tracking.
+
+    .. grid-item-card:: Quadratic Space :math:`O(n ^ 2)`
+
+        Memory scales by the square of input size.
+
+        .. admonition:: Common Use Case / Triggers
+            :class: hint
+
+            2D matrices, dense graphs, nested dynamic tracking.
 
 How to Calculate Space Complexity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

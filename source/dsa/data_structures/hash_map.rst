@@ -40,42 +40,58 @@ A **hash map** (also known as a **hash table**, **dictionary**, or **associative
 Advantages and Disadvantages
 ++++++++++++++++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Advantages
 
-        Near-Instance Search, Insertion, and Deletion
-          Operations run at an average time complexity of :math:`O(1)`. A hash function calculates the exact memory index of a key directly, eliminating the need to iterate through elements or search down balanced trees.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        High Flexibility
-          Keys are not restricted to sequential integers like array indices. You can use strings, objects, or other data types to model real-world relationships natively (e.g. mapping a username to a profile object).
+            .. grid-item-card:: Near-Instance Search, Insertion, and Deletion
 
-        Enforced Key Uniqueness
-          Hash maps naturally prevent duplicate keys. Attempting to insert an existing key simply overwrites the old value, which makes deduplication straightforward.
+                Operations run at an average time complexity of :math:`O(1)`. A hash function calculates the exact memory index of a key directly, eliminating the need to iterate through elements or search down balanced trees.
 
-        Dynamic Resizing
-          Most modern programming languages implement built-in hash maps that automatically scale their inner capacity outward once data density triggers a certain threshold.
+            .. grid-item-card:: High Flexibility
+
+                Keys are not restricted to sequential integers like array indices. You can use strings, objects, or other data types to model real-world relationships natively (e.g. mapping a username to a profile object).
+
+            .. grid-item-card:: Enforced Key Uniqueness
+
+                Hash maps naturally prevent duplicate keys. Attempting to insert an existing key simply overwrites the old value, which makes deduplication straightforward.
+
+            .. grid-item-card:: Dynamic Resizing
+
+                Most modern programming languages implement built-in hash maps that automatically scale their inner capacity outward once data density triggers a certain threshold.
 
     .. grid-item-card:: Disadvantages
 
-        Worst-Case Performance Degradation
-          If multiple keys generate the identical hash index (a conflict known as a **hash collision**), the map must fall back to collision resolution strategies like linked list chaining or open addressing. In server scenarios---such as a malicious "Hash DoS" exploit targeting data patterns---lookups can collapse to an inefficient worst-case time complexity of :math:`O(n)`.
+        .. grid:: 1
+            :class-row: surface
+            :gutter: 3
 
-        No Element Ordering
-          Hash maps are inherently **unordered**. The placement of entries fluctuates based on the hash function's output rather than insertion order or value weight. If your workflow demands sorted data or predictable iterations, alternative structures like Tree Map or Linked Hash Map are required.
+            .. grid-item-card:: Worst-Case Performance Degradation
 
-        Higher Memory Footprint
-          Hash maps sacrifice spatial efficiency to maintain oeprational speed. They require spare, unoccupied memory slots (buckets) to prevent collision bottlenecks, resulting in larger memory requirements than packed arrays or linked lists.
+                If multiple keys generate the identical hash index (a conflict known as a **hash collision**), the map must fall back to collision resolution strategies like linked list chaining or open addressing. In server scenarios---such as a malicious "Hash DoS" exploit targeting data patterns---lookups can collapse to an inefficient worst-case time complexity of :math:`O(n)`.
 
-        Costly Resizing Overhead
-          While resizing ensures long-term operational speed, the transition itself is computationally expensive. The entire array must expand, and every existing key must be systematically rehashed and repositioned into new buckets.
+            .. grid-item-card:: No Element Ordering
+
+                Hash maps are inherently **unordered**. The placement of entries fluctuates based on the hash function's output rather than insertion order or value weight. If your workflow demands sorted data or predictable iterations, alternative structures like Tree Map or Linked Hash Map are required.
+
+            .. grid-item-card:: Higher Memory Footprint
+
+                Hash maps sacrifice spatial efficiency to maintain oeprational speed. They require spare, unoccupied memory slots (buckets) to prevent collision bottlenecks, resulting in larger memory requirements than packed arrays or linked lists.
+
+            .. grid-item-card:: Costly Resizing Overhead
+
+                While resizing ensures long-term operational speed, the transition itself is computationally expensive. The entire array must expand, and every existing key must be systematically rehashed and repositioned into new buckets.
 
 
 Core Operations
 +++++++++++++++
 
-.. grid:: 1 2 2 2
+.. grid:: 1
     :gutter: 3
 
     .. grid-item-card:: Insertion

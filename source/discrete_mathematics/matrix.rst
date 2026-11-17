@@ -546,7 +546,7 @@ Similar to matrix multiplication, we can define a multiplication-like operation 
 
 The typical *inner product* used matrix multiplication replaced by a "disjunction of conjunctions".
 
-Let :math:`A` be an :math:`m` by :math:`n` zero-one matrix and :math:`B` be an :math:`n` by :math:`o` zero-one matrix. The boolean product of :math:`A` and :math:`B`, denoted :math:`A \odot B` is an :math:`m` by :math:`p` zero-one matrix with elements :math:`c_{i, j}` defiend as:
+Let :math:`A` be an :math:`m` by :math:`n` zero-one matrix and :math:`B` be an :math:`n` by :math:`o` zero-one matrix. The boolean product of :math:`A` and :math:`B`, denoted :math:`A \odot B` is an :math:`m` by :math:`p` zero-one matrix with elements :math:`c_{i, j}` defined as:
 
 .. math::
 

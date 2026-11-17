@@ -29,11 +29,16 @@ In the figure above, we have a graph with 5 vertices and 5 edges.
 Special Edges
 +++++++++++++
 
-Parallel edges
-  Two or more edges joining a pair of vertices.
+.. grid:: 1
+    :gutter: 3
 
-Loops
-  An edge that starts and ends at the same vertex.
+    .. grid-item-card:: Parallel edges
+
+        Two or more edges joining a pair of vertices.
+
+    .. grid-item-card:: Loops
+
+        An edge that starts and ends at the same vertex.
 
 
 The Language of Graphs
@@ -427,7 +432,7 @@ Designating a root in a tree includes special relationships between vertices. It
 
 - To speak about a vertex's children and children's children, etc. we say **descendants**.
 
-Visually, rooted trees are almost always drwan with the root at the top. Then, children are always drawn lower than their parents.
+Visually, rooted trees are almost always drawn with the root at the top. Then, children are always drawn lower than their parents.
 
 If we wanted to be very precise with the drawing of a rooted tree, we would draw every child at the same *level* of a tree at the same y-position. The **level** of a vertex in a tree is its distance from the root.
 

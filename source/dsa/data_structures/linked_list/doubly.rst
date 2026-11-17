@@ -8,7 +8,6 @@ Advantages and Disadvantages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. grid:: 1 2 2 2
-    :class-row: surface
     :gutter: 3
 
     .. grid-item-card:: Advantages
@@ -39,14 +38,20 @@ Node Structure
 
 Every node in a doubly linked list consists of three distinct parts:
 
-Previous Pointer
-  Stores the memory address of the preceding node.
+.. grid:: 1
+    :gutter: 3
 
-Data
-  Holds the actual value or payload.
+    .. grid-item-card:: Previous Pointer
 
-Next Pointer
-  Stores the memory address of the succeeding node.
+        Stores the memory address of the preceding node.
+
+    .. grid-item-card:: Data
+
+        Holds the actual value or payload.
+
+    .. grid-item-card:: Next Pointer
+
+        Stores the memory address of the succeeding node.
 
 The ``previous`` pointer of the first node (head) and the ``next`` pointer of the last node (tail) point to ``Null`` to signify the boundaries of the list.
 
