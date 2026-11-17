@@ -22,9 +22,35 @@ Table of Contents
 
 .. toctree::
     :maxdepth: 1
+    :caption: Computers
+    
+    Introductory <./computers/index.rst>
+    computers/history_of_computing
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Computer Programming
+    
+    Introductory <./programming/index.rst>
+    programming/editors
+    programming/databases/index
+    programming/languages/index
+
+.. toctree::
+    :maxdepth: 1
     :caption: Database Management Systems
 
     Introductory <./dbms/index.rst>
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Data Structures & Algorithms
+    
+    Introductory <./dsa/index.rst>
+    dsa/algorithms/index
+    dsa/data_structures/index
+    dsa/space_complexity
+    dsa/time_complexity
 
 .. toctree::
     :maxdepth: 1
@@ -34,6 +60,61 @@ Table of Contents
     discord/api/index
     discord/markdown
     discord/message_formatting
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Discrete Mathematics
+    
+    Introductory <./discrete_mathematics/index.rst>
+    discrete_mathematics/functions/index
+    discrete_mathematics/graph_theory/index
+    discrete_mathematics/integers_and_divisibility
+    discrete_mathematics/matrix
+    discrete_mathematics/number_systems
+    discrete_mathematics/probability_theory/index
+    discrete_mathematics/propositions/index
+    discrete_mathematics/set_theory
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Graphics and Visual Computing
+
+    Introductory <./graphics_and_visual_computing/index.rst>
+    graphics_and_visual_computing/foundations
+    graphics_and_visual_computing/design_principles
+    graphics_and_visual_computing/graphics_programming
+    graphics_and_visual_computing/animation_and_interaction
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Information Management
+
+    Introductory <./information_management/index.rst>
+    information_management/fundamentals
+    information_management/erd
+    information_management/reengineering_of_databases
+    information_management/uml
+    information_management/database_normalization
+    information_management/mysql
+    information_management/db_administration
+    information_management/distributed_db
+    information_management/data_distribution
+
+.. toctree::
+    :maxdepth: 1
+    :caption: IS Innovations
+
+    Introductory <./is_innovations/index.rst>
+    is_innovations/disruptive_innovation
+    is_innovations/iot
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Web Development
+
+    Introductory <./webdev/index.rst>
+    webdev/canvas/index
+    webdev/resources
 
 
 Contribution

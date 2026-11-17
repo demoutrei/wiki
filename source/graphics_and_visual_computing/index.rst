@@ -1,0 +1,27 @@
+Graphics and Visual Computing
+=============================
+
+**Graphics and Visual Computing** is a branch of computer science that deals with the creation, processing, analysis, and rendering of digital images and 3D models using computers.
+
+.. grid:: 1
+    :gutter: 3
+
+    .. grid-item-card:: Foundations of Graphics and Visual Computing
+        :link: ./foundations
+        :link-type: url
+
+    .. grid-item-card:: Design Principles
+        :link: ./design_principles
+        :link-type: url
+
+        Design principles are the starting point of visual design. They act as the foundation or building blocks that guide us in creating effective and appealing visuals.
+
+    .. grid-item-card:: Graphics Programming
+        :link: ./graphics_programming
+        :link-type: url
+
+        The process of computer instructions that generate, manipulate, and display visual content on a screen or another output device.
+
+    .. grid-item-card:: Animation and Interaction
+        :link: ./animation_and_interaction
+        :link-type: url
