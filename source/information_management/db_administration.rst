@@ -1,7 +1,7 @@
 Database Administration
 =======================
 
-Database administration focuses on the operational management of database systems so that they remain available, reliable, secure, and performant. Three core responsibilities are **concurrency ontrol**, **security management**, and **backup and recovery**. These functions direectly affect the quality, reliability, and safety of the data that supports organizational processes.
+Database administration focuses on the operational management of database systems so that they remain available, reliable, secure, and performant. Three core responsibilities are **concurrency control**, **security management**, and **backup and recovery**. These functions direectly affect the quality, reliability, and safety of the data that supports organizational processes.
 
 
 Concurrency
@@ -14,7 +14,7 @@ Concurrency
 
     .. grid-item-card:: Transaction Management
 
-        Database administrators (ADBs) configure transaction isolation levels (e.g. read committed, repetable read) to balance consistency and performance.
+        Database administrators (DBAs) configure transaction isolation levels (e.g. read committed, repetable read) to balance consistency and performance.
 
     .. grid-item-card:: Locking Mechanisms
 
@@ -84,7 +84,7 @@ Backup and Recovery
 Integration with Database Quality
 +++++++++++++++++++++++++++++++++
 
-Concurrency, security, and backup.recovery are not isolated tasks. Together, they determine how reliable, scalable, and secure a database system is:
+Concurrency, security, and backup/recovery are not isolated tasks. Together, they determine how reliable, scalable, and secure a database system is:
 
 - Concurrency affects performance and consistency for many simultaneous users.
 - Security ensures that only authorized users can access or modify data, preserving confidentiality and integrity.
