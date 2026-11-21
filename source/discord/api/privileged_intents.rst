@@ -11,7 +11,7 @@
               "components": [
                 {
                   "type": 10,
-                  "content": "# [Privileged Intents](https://guides.demoutrei.dev/discord/api/privileged_intents)\nLearn more about Privileged Intents and when to enable them."
+                  "content": "# [Privileged Intents](https://wiki.demoutrei.dev/discord/api/privileged_intents)\nLearn more about Privileged Intents and when to enable them."
                 }
               ],
               "accessory": {
