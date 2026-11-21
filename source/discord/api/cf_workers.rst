@@ -11,7 +11,7 @@
               "components": [
                 {
                   "type": 10,
-                  "content": "# [Cloudflare Workers](https://guides.demoutrei.dev/discord/api/cf-workers)\nLearn how to integrate HTTP-interaction (serverless) Discord application with Cloudflare Workers."
+                  "content": "# [Cloudflare Workers](https://wiki.demoutrei.dev/discord/api/cf-workers)\nLearn how to integrate HTTP-interaction (serverless) Discord application with Cloudflare Workers."
                 }
               ],
               "accessory": {
@@ -188,8 +188,8 @@ Next Steps
     `Write Cloudflare Workers in Python - Cloudflare Workers docs`_
 
 
-.. _Cloudflare Worker: https://guides.demoutrei.dev/cloudflare/workers
-.. _Cloudflare Workers -- Getting Started: https://guides.demoutrei.dev/cloudflare/workers/getting_started
+.. _Cloudflare Worker: https://wiki.demoutrei.dev/cloudflare/workers
+.. _Cloudflare Workers -- Getting Started: https://wiki.demoutrei.dev/cloudflare/workers/getting_started
 .. _Discord: https://discord.com
 .. _How Do I Create an Application?: ./faq#how-do-i-create-an-application
 .. _Interactions Overview - Documentation - Discord: https://docs.discord.com/developers/interactions/overview#validating-security-headers
